@@ -4,59 +4,104 @@ AI-driven research pipeline that analyzes 100 apps for integration readiness as 
 
 ## Project Structure
 
-```
+```text
 composio/
-├── backend/                    # Research agent pipeline
-│   ├── data/
-│   │   ├── apps_input.json     # Input: 100 apps with metadata
-│   │   └── research_results.json # Output: structured research data
+├── api/
+│   └── index.js                # Vercel serverless function entrypoint
+├── backend/                    # Research agent pipeline & API server
 │   ├── agent/
-│   │   ├── researcher.py       # Core research logic per app
-│   │   └── analyzer.py         # Pattern analysis across all apps
-│   ├── main.py                 # Pipeline orchestrator
-│   └── requirements.txt
+│   │   ├── analyzer.py         # Pattern analysis routines
+│   │   └── researcher.py       # Core research logic per app
+│   ├── data/
+│   │   ├── apps_input.json     # Input: 100 apps metadata
+│   │   ├── patterns.json       # Generated cross-app statistical patterns
+│   │   ├── research_results_merged.json # Primary database for research results
+│   │   └── verification.json   # Spot-check verification metrics
+│   ├── main.py                 # CLI research pipeline orchestrator
+│   ├── requirements.txt        # Python dependency documentation
+│   └── server.js               # Express server with live SSE agent endpoint
 ├── frontend/
-│   └── index.html              # Single-page HTML case study deliverable
+│   └── index.html              # Dynamic single-page dashboard deliverable
+├── .env.example                # Environment variables template
+├── vercel.json                 # Vercel deployment configuration
+├── build.js                    # Build script for frontend generation
+├── package.json                # Project dependencies and npm scripts
 └── README.md
 ```
 
-## How to Run the Research Agent
+## How to Run Locally
 
-### Prerequisites
-- Python 3.10+
-- Internet access for web research
-
-### Setup
+### 1. Web Application & Live Agent Server
 ```bash
-cd backend
-pip install -r requirements.txt
+# Install dependencies
+npm install
+
+# Configure environment
+cp .env.example .env
+
+# Start development server
+npm run dev
+
+# Or build frontend dashboard bundle
+npm run build
+```
+Open `http://localhost:3001` in your browser to view the dynamic dashboard and interact with the live Groq research agent.
+
+### 2. Python Pattern Analysis Pipeline
+```bash
+python backend/main.py
 ```
 
-### Run Research Pipeline
-```bash
-python main.py                  # Full pipeline: research → analyze → export
-python main.py --verify         # Run with verification pass
-python main.py --app "Salesforce"  # Research a single app
-```
+---
 
-### View Results
-Open `frontend/index.html` in any browser — it's a self-contained single-page case study.
+## How to Host on Vercel
 
-## Methodology
+The project is pre-configured for **one-click deployment to Vercel** using `@vercel/node` serverless functions and `vercel.json`.
 
-1. **Automated Research**: The agent searches developer docs, API references, and pricing pages for each app.
-2. **Data Extraction**: Structured fields (auth, API surface, self-serve status, MCP, buildability) are extracted.
-3. **Pattern Analysis**: Cross-app patterns are computed (auth distribution, category trends, blockers).
-4. **Verification**: 20% sample manually verified against real docs; accuracy metrics reported honestly.
+### Method A: Deploy via Vercel CLI (Recommended)
 
-## What the Agent Does vs Where Humans Were Needed
+1. Install Vercel CLI globally:
+   ```bash
+   npm i -g vercel
+   ```
 
-| Step | Agent | Human |
-|------|-------|-------|
-| Finding API docs | ✅ Web search + URL reading | Fallback for obscure apps |
-| Auth method identification | ✅ Pattern matching on docs | Verification of edge cases |
-| Self-serve assessment | ✅ Pricing page analysis | Nuance (e.g., "free but limited") |
-| API breadth estimation | ⚠️ Endpoint count heuristic | Judgment on quality vs quantity |
-| MCP server detection | ✅ Search for existing MCP repos | Manual confirmation |
-| Buildability verdict | ⚠️ Rule-based scoring | Final judgment call |
-| Pattern analysis | ✅ Statistical aggregation | Narrative insight |
+2. Run `vercel` in the project root directory:
+   ```bash
+   vercel
+   ```
+
+3. When prompted, set Environment Variables on Vercel:
+   - `GROQ_API_KEY`: Your Groq API key (e.g., `gsk_...`)
+   - `GROQ_MODEL`: Optional (defaults to `llama-3.3-70b-versatile`)
+
+4. Deploy to Production:
+   ```bash
+   vercel --prod
+   ```
+
+---
+
+### Method B: Deploy via GitHub & Vercel Dashboard
+
+1. Push your repository to GitHub:
+   ```bash
+   git add .
+   git commit -m "Configure Vercel deployment"
+   git push origin main
+   ```
+
+2. Go to [Vercel Dashboard](https://vercel.com/new) and click **Import Project**.
+3. Select your GitHub repository.
+4. Framework Preset: **Other** or **Node.js**.
+5. Under **Environment Variables**, add:
+   - `GROQ_API_KEY`: `your_groq_api_key`
+   - `GROQ_MODEL`: `llama-3.3-70b-versatile`
+6. Click **Deploy**. Vercel will automatically build the static assets using `node build.js` and spin up serverless API routes.
+
+---
+
+## Features
+
+- **Dynamic Statistics & Insights**: All dashboard metrics, category breakdowns, auth distribution charts, and buildability verdicts are calculated dynamically from real backend research data.
+- **Real-Time Agent Execution**: Streams step-by-step LLM analysis via Server-Sent Events (SSE) using Groq API (`llama-3.3-70b-versatile` / `allam-2-7b`).
+- **Data Persistence & Vercel Serverless Ready**: Works seamlessly locally and in cloud serverless environments.

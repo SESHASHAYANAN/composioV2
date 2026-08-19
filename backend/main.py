@@ -12,14 +12,20 @@ import sys
 from datetime import datetime
 
 
-def load_apps(filepath="data/apps_input.json"):
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+def load_apps(filepath=None):
     """Load the list of apps to research."""
+    if filepath is None:
+        filepath = os.path.join(BASE_DIR, "data", "apps_input.json")
     with open(filepath, "r", encoding="utf-8") as f:
         return json.load(f)
 
 
-def load_results(filepath="data/research_results_merged.json"):
+def load_results(filepath=None):
     """Load existing research results."""
+    if filepath is None:
+        filepath = os.path.join(BASE_DIR, "data", "research_results_merged.json")
     with open(filepath, "r", encoding="utf-8") as f:
         return json.load(f)
 
@@ -153,7 +159,7 @@ def main():
     # Analyze patterns
     print("\n[2/4] Analyzing patterns...")
     patterns = analyze_patterns(results)
-    with open("data/patterns.json", "w", encoding="utf-8") as f:
+    with open(os.path.join(BASE_DIR, "data", "patterns.json"), "w", encoding="utf-8") as f:
         json.dump(patterns, f, indent=2)
     print(f"  Auth methods found: {patterns['auth_distribution']}")
     print(f"  MCP servers: {patterns['mcp_count']}/{patterns['total_apps']}")
@@ -162,7 +168,7 @@ def main():
     # Verification
     print("\n[3/4] Running verification...")
     verification = generate_verification_report(results)
-    with open("data/verification.json", "w", encoding="utf-8") as f:
+    with open(os.path.join(BASE_DIR, "data", "verification.json"), "w", encoding="utf-8") as f:
         json.dump(verification, f, indent=2)
     print(f"  Sample size: {verification['sample_size']}")
     print(f"  First-pass accuracy: {verification['accuracy_metrics']['first_pass_accuracy']:.0%}")

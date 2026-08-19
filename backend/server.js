@@ -136,6 +136,41 @@ app.get('/api/apps', (req, res) => {
   res.json(researchData);
 });
 
+// Update specific app data
+app.put('/api/apps/:id', (req, res) => {
+  const appId = parseInt(req.params.id, 10);
+  const appIndex = researchData.findIndex(a => a.id === appId);
+  if (appIndex === -1) {
+    return res.status(404).json({ error: 'App not found' });
+  }
+  researchData[appIndex] = { ...researchData[appIndex], ...req.body, id: appId };
+  try {
+    fs.writeFileSync(dataPath, JSON.stringify(researchData, null, 2), 'utf8');
+    console.log(`[DATA] Updated app #${appId} (${researchData[appIndex].name})`);
+  } catch (err) {
+    console.error('[ERROR] Failed to save updated app data:', err.message);
+  }
+  res.json({ success: true, app: researchData[appIndex], apps: researchData });
+});
+
+// Add new app data or bulk update
+app.post('/api/apps', (req, res) => {
+  if (Array.isArray(req.body)) {
+    researchData = req.body;
+  } else {
+    const newApp = req.body;
+    if (!newApp.id) newApp.id = researchData.length + 1;
+    researchData.push(newApp);
+  }
+  try {
+    fs.writeFileSync(dataPath, JSON.stringify(researchData, null, 2), 'utf8');
+    console.log(`[DATA] Updated research data (${researchData.length} apps)`);
+  } catch (err) {
+    console.error('[ERROR] Failed to save research data:', err.message);
+  }
+  res.json({ success: true, apps: researchData });
+});
+
 /**
  * Agent execution endpoint - Server-Sent Events (SSE)
  * Streams real-time agent steps to the frontend.
@@ -297,7 +332,15 @@ app.get('/api/agent/run/:appId', async (req, res) => {
       }
     });
 
-    send('complete', { app: appData.name, success: true });
+    // Persist last researched timestamp for this app
+    appData.lastResearched = new Date().toISOString();
+    try {
+      fs.writeFileSync(dataPath, JSON.stringify(researchData, null, 2), 'utf8');
+    } catch (saveErr) {
+      console.error('[ERROR] Failed to save updated research timestamp:', saveErr.message);
+    }
+
+    send('complete', { app: appData.name, success: true, appData });
   } catch (err) {
     console.error('[AGENT ERROR]', err.message);
     send('error', { message: err.message || 'Agent execution failed' });
@@ -337,13 +380,20 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '..', 'frontend', 'index.html'));
 });
 
-// Start server after model discovery
-(async () => {
-  await discoverModel();
-  app.listen(PORT, () => {
-    console.log(`\n[SERVER] Composio Research Agent running at http://localhost:${PORT}`);
-    console.log(`[SERVER] Groq API: Connected`);
-    console.log(`[SERVER] Active Model: ${activeModel}`);
-    console.log(`[SERVER] Apps loaded: ${researchData.length}`);
-  });
-})();
+// Start server if run directly, or export app for serverless Vercel deployment
+if (require.main === module) {
+  (async () => {
+    await discoverModel();
+    app.listen(PORT, () => {
+      console.log(`\n[SERVER] Composio Research Agent running at http://localhost:${PORT}`);
+      console.log(`[SERVER] Groq API: Connected`);
+      console.log(`[SERVER] Active Model: ${activeModel}`);
+      console.log(`[SERVER] Apps loaded: ${researchData.length}`);
+    });
+  })();
+} else {
+  discoverModel().catch(err => console.error('[MODEL] Discovery error in serverless mode:', err));
+}
+
+module.exports = app;
+

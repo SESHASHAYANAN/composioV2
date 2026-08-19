@@ -14,7 +14,8 @@
     "buildability": "ready",
     "blocker": "none",
     "evidenceUrl": "https://developer.salesforce.com/docs/apis",
-    "confidence": "high"
+    "confidence": "high",
+    "lastResearched": "2026-08-19T19:46:35.152Z"
   },
   {
     "id": 2,
@@ -32,7 +33,8 @@
     "buildability": "ready",
     "blocker": "none",
     "evidenceUrl": "https://developers.hubspot.com/docs/api/overview",
-    "confidence": "high"
+    "confidence": "high",
+    "lastResearched": "2026-08-19T20:00:38.960Z"
   },
   {
     "id": 3,
@@ -261,7 +263,8 @@
     "buildability": "feasible",
     "blocker": "Smaller API surface",
     "evidenceUrl": "https://docs.usepylon.com",
-    "confidence": "high"
+    "confidence": "high",
+    "lastResearched": "2026-08-19T20:04:01.046Z"
   },
   {
     "id": 16,
