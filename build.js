@@ -114,7 +114,7 @@ footer{text-align:center;padding:48px 24px;color:#64748b;font-size:13px;border-t
 <div class="agent-demo">
 <div class="agent-banner">
 <h2>Live Research Agent Demo</h2>
-<p>Watch the AI research agent analyze any app in real-time. Powered by Groq with 10-step pipeline execution.</p>
+<p>Watch the AI research agent analyze any app in real-time. Powered by AI agents with 10-step pipeline execution.</p>
 <div>
 <select class="agent-select" id="agentAppSelect"><option value="">Select an app to research...</option></select>
 <button class="run-btn" id="runAgentBtn" onclick="runAgent()" disabled><span class="play">&#9654;</span> Run Research Agent</button>
