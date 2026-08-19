@@ -131,10 +131,9 @@ app.get('/api/health', (req, res) => {
   });
 });
 
-// List available apps for demo
+// List available apps and full data for UI
 app.get('/api/apps', (req, res) => {
-  const apps = researchData.map(a => ({ id: a.id, name: a.name, cat: a.cat }));
-  res.json(apps);
+  res.json(researchData);
 });
 
 /**
