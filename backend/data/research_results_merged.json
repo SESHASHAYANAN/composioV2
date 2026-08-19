@@ -1,0 +1,1748 @@
+[
+  {
+    "id": 1,
+    "name": "Salesforce",
+    "cat": "CRM and Sales",
+    "desc": "Enterprise CRM for sales, service, and marketing automation",
+    "auth": [
+      "OAuth2"
+    ],
+    "selfServe": "trial",
+    "apiType": "REST",
+    "apiBreadth": "comprehensive",
+    "hasMcp": true,
+    "buildability": "ready",
+    "blocker": "none",
+    "evidenceUrl": "https://developer.salesforce.com/docs/apis",
+    "confidence": "high"
+  },
+  {
+    "id": 2,
+    "name": "HubSpot",
+    "cat": "CRM and Sales",
+    "desc": "Inbound marketing, sales, and CRM platform",
+    "auth": [
+      "OAuth2",
+      "API Key"
+    ],
+    "selfServe": "free_tier",
+    "apiType": "REST",
+    "apiBreadth": "comprehensive",
+    "hasMcp": true,
+    "buildability": "ready",
+    "blocker": "none",
+    "evidenceUrl": "https://developers.hubspot.com/docs/api/overview",
+    "confidence": "high"
+  },
+  {
+    "id": 3,
+    "name": "Pipedrive",
+    "cat": "CRM and Sales",
+    "desc": "Sales-focused CRM with pipeline management",
+    "auth": [
+      "OAuth2",
+      "API Key"
+    ],
+    "selfServe": "trial",
+    "apiType": "REST",
+    "apiBreadth": "comprehensive",
+    "hasMcp": true,
+    "buildability": "ready",
+    "blocker": "none",
+    "evidenceUrl": "https://developers.pipedrive.com/docs/api/v1",
+    "confidence": "high"
+  },
+  {
+    "id": 4,
+    "name": "Attio",
+    "cat": "CRM and Sales",
+    "desc": "Next-gen CRM with flexible data model",
+    "auth": [
+      "OAuth2",
+      "API Key"
+    ],
+    "selfServe": "free_tier",
+    "apiType": "REST",
+    "apiBreadth": "comprehensive",
+    "hasMcp": false,
+    "buildability": "ready",
+    "blocker": "none",
+    "evidenceUrl": "https://developers.attio.com",
+    "confidence": "high"
+  },
+  {
+    "id": 5,
+    "name": "Twenty",
+    "cat": "CRM and Sales",
+    "desc": "Open-source CRM with customizable data model",
+    "auth": [
+      "OAuth2",
+      "API Key"
+    ],
+    "selfServe": "free_tier",
+    "apiType": "Both",
+    "apiBreadth": "comprehensive",
+    "hasMcp": false,
+    "buildability": "ready",
+    "blocker": "none",
+    "evidenceUrl": "https://twenty.com/developers",
+    "confidence": "high"
+  },
+  {
+    "id": 6,
+    "name": "Podio",
+    "cat": "CRM and Sales",
+    "desc": "Collaborative work and project management platform",
+    "auth": [
+      "OAuth2"
+    ],
+    "selfServe": "free_tier",
+    "apiType": "REST",
+    "apiBreadth": "comprehensive",
+    "hasMcp": false,
+    "buildability": "ready",
+    "blocker": "none",
+    "evidenceUrl": "https://developers.podio.com",
+    "confidence": "high"
+  },
+  {
+    "id": 7,
+    "name": "Zoho CRM",
+    "cat": "CRM and Sales",
+    "desc": "Cloud-based CRM for sales and marketing",
+    "auth": [
+      "OAuth2"
+    ],
+    "selfServe": "free_tier",
+    "apiType": "REST",
+    "apiBreadth": "comprehensive",
+    "hasMcp": true,
+    "buildability": "ready",
+    "blocker": "none",
+    "evidenceUrl": "https://www.zoho.com/crm/developer/docs/api/v7/",
+    "confidence": "high"
+  },
+  {
+    "id": 8,
+    "name": "Close",
+    "cat": "CRM and Sales",
+    "desc": "CRM built for inside sales teams",
+    "auth": [
+      "OAuth2",
+      "API Key"
+    ],
+    "selfServe": "trial",
+    "apiType": "REST",
+    "apiBreadth": "comprehensive",
+    "hasMcp": false,
+    "buildability": "ready",
+    "blocker": "none",
+    "evidenceUrl": "https://developer.close.com",
+    "confidence": "high"
+  },
+  {
+    "id": 9,
+    "name": "Copper",
+    "cat": "CRM and Sales",
+    "desc": "Google Workspace-native CRM",
+    "auth": [
+      "API Key"
+    ],
+    "selfServe": "trial",
+    "apiType": "REST",
+    "apiBreadth": "moderate",
+    "hasMcp": false,
+    "buildability": "feasible",
+    "blocker": "none",
+    "evidenceUrl": "https://developer.copper.com",
+    "confidence": "high"
+  },
+  {
+    "id": 10,
+    "name": "DealCloud",
+    "cat": "CRM and Sales",
+    "desc": "CRM for capital markets and financial services",
+    "auth": [
+      "OAuth2"
+    ],
+    "selfServe": "contact_sales",
+    "apiType": "REST",
+    "apiBreadth": "moderate",
+    "hasMcp": false,
+    "buildability": "challenging",
+    "blocker": "Enterprise-only, admin approval required",
+    "evidenceUrl": "https://api.docs.dealcloud.com",
+    "confidence": "high"
+  },
+  {
+    "id": 11,
+    "name": "Zendesk",
+    "cat": "Support and Helpdesk",
+    "desc": "Customer service and engagement platform",
+    "auth": [
+      "OAuth2",
+      "API Key"
+    ],
+    "selfServe": "trial",
+    "apiType": "REST",
+    "apiBreadth": "comprehensive",
+    "hasMcp": true,
+    "buildability": "ready",
+    "blocker": "none",
+    "evidenceUrl": "https://developer.zendesk.com/api-reference",
+    "confidence": "high"
+  },
+  {
+    "id": 12,
+    "name": "Intercom",
+    "cat": "Support and Helpdesk",
+    "desc": "Conversational customer engagement platform",
+    "auth": [
+      "OAuth2",
+      "API Key"
+    ],
+    "selfServe": "trial",
+    "apiType": "REST",
+    "apiBreadth": "comprehensive",
+    "hasMcp": true,
+    "buildability": "ready",
+    "blocker": "none",
+    "evidenceUrl": "https://developers.intercom.com/docs",
+    "confidence": "high"
+  },
+  {
+    "id": 13,
+    "name": "Freshdesk",
+    "cat": "Support and Helpdesk",
+    "desc": "Cloud-based customer support software",
+    "auth": [
+      "OAuth2",
+      "API Key"
+    ],
+    "selfServe": "free_tier",
+    "apiType": "REST",
+    "apiBreadth": "comprehensive",
+    "hasMcp": false,
+    "buildability": "ready",
+    "blocker": "none",
+    "evidenceUrl": "https://developers.freshdesk.com/api",
+    "confidence": "high"
+  },
+  {
+    "id": 14,
+    "name": "Front",
+    "cat": "Support and Helpdesk",
+    "desc": "Shared inbox and customer communication hub",
+    "auth": [
+      "OAuth2",
+      "API Key"
+    ],
+    "selfServe": "trial",
+    "apiType": "REST",
+    "apiBreadth": "comprehensive",
+    "hasMcp": false,
+    "buildability": "ready",
+    "blocker": "none",
+    "evidenceUrl": "https://dev.frontapp.com/docs",
+    "confidence": "high"
+  },
+  {
+    "id": 15,
+    "name": "Pylon",
+    "cat": "Support and Helpdesk",
+    "desc": "B2B customer support across Slack, Teams, email",
+    "auth": [
+      "API Key"
+    ],
+    "selfServe": "trial",
+    "apiType": "REST",
+    "apiBreadth": "moderate",
+    "hasMcp": false,
+    "buildability": "feasible",
+    "blocker": "Smaller API surface",
+    "evidenceUrl": "https://docs.usepylon.com",
+    "confidence": "high"
+  },
+  {
+    "id": 16,
+    "name": "LiveAgent",
+    "cat": "Support and Helpdesk",
+    "desc": "Multi-channel helpdesk and live chat",
+    "auth": [
+      "API Key"
+    ],
+    "selfServe": "trial",
+    "apiType": "REST",
+    "apiBreadth": "comprehensive",
+    "hasMcp": false,
+    "buildability": "ready",
+    "blocker": "none",
+    "evidenceUrl": "https://support.liveagent.com/api",
+    "confidence": "high"
+  },
+  {
+    "id": 17,
+    "name": "Plain",
+    "cat": "Support and Helpdesk",
+    "desc": "API-first customer support platform",
+    "auth": [
+      "API Key"
+    ],
+    "selfServe": "free_tier",
+    "apiType": "GraphQL",
+    "apiBreadth": "comprehensive",
+    "hasMcp": false,
+    "buildability": "ready",
+    "blocker": "none",
+    "evidenceUrl": "https://docs.plain.com",
+    "confidence": "high"
+  },
+  {
+    "id": 18,
+    "name": "Help Scout",
+    "cat": "Support and Helpdesk",
+    "desc": "Help desk and knowledge base platform",
+    "auth": [
+      "OAuth2",
+      "API Key"
+    ],
+    "selfServe": "trial",
+    "apiType": "REST",
+    "apiBreadth": "comprehensive",
+    "hasMcp": false,
+    "buildability": "ready",
+    "blocker": "none",
+    "evidenceUrl": "https://developer.helpscout.com",
+    "confidence": "high"
+  },
+  {
+    "id": 19,
+    "name": "Gorgias",
+    "cat": "Support and Helpdesk",
+    "desc": "Ecommerce-focused helpdesk platform",
+    "auth": [
+      "OAuth2",
+      "Basic"
+    ],
+    "selfServe": "trial",
+    "apiType": "REST",
+    "apiBreadth": "comprehensive",
+    "hasMcp": false,
+    "buildability": "ready",
+    "blocker": "none",
+    "evidenceUrl": "https://developers.gorgias.com",
+    "confidence": "high"
+  },
+  {
+    "id": 20,
+    "name": "Gladly",
+    "cat": "Support and Helpdesk",
+    "desc": "People-centered customer service platform",
+    "auth": [
+      "Basic"
+    ],
+    "selfServe": "contact_sales",
+    "apiType": "REST",
+    "apiBreadth": "moderate",
+    "hasMcp": false,
+    "buildability": "challenging",
+    "blocker": "Enterprise-only, contact sales required",
+    "evidenceUrl": "https://developer.gladly.com",
+    "confidence": "high"
+  },
+  {
+    "id": 21,
+    "name": "Slack",
+    "cat": "Communications and Messaging",
+    "desc": "Team messaging and collaboration platform",
+    "auth": [
+      "OAuth2"
+    ],
+    "selfServe": "free_tier",
+    "apiType": "REST",
+    "apiBreadth": "comprehensive",
+    "hasMcp": true,
+    "buildability": "ready",
+    "blocker": "none",
+    "evidenceUrl": "https://api.slack.com",
+    "confidence": "high"
+  },
+  {
+    "id": 22,
+    "name": "Twilio",
+    "cat": "Communications and Messaging",
+    "desc": "Cloud communications APIs for voice, SMS, video",
+    "auth": [
+      "API Key",
+      "Basic"
+    ],
+    "selfServe": "free_tier",
+    "apiType": "REST",
+    "apiBreadth": "comprehensive",
+    "hasMcp": true,
+    "buildability": "ready",
+    "blocker": "none",
+    "evidenceUrl": "https://www.twilio.com/docs/usage/api",
+    "confidence": "high"
+  },
+  {
+    "id": 23,
+    "name": "Zoho Cliq",
+    "cat": "Communications and Messaging",
+    "desc": "Team communication and collaboration tool",
+    "auth": [
+      "OAuth2"
+    ],
+    "selfServe": "free_tier",
+    "apiType": "REST",
+    "apiBreadth": "moderate",
+    "hasMcp": false,
+    "buildability": "feasible",
+    "blocker": "Smaller user base",
+    "evidenceUrl": "https://www.zoho.com/cliq/help/platform/api.html",
+    "confidence": "high"
+  },
+  {
+    "id": 24,
+    "name": "Lark",
+    "cat": "Communications and Messaging",
+    "desc": "Collaboration suite with messaging, docs, video",
+    "auth": [
+      "OAuth2"
+    ],
+    "selfServe": "free_tier",
+    "apiType": "REST",
+    "apiBreadth": "comprehensive",
+    "hasMcp": false,
+    "buildability": "ready",
+    "blocker": "none",
+    "evidenceUrl": "https://open.larksuite.com",
+    "confidence": "high"
+  },
+  {
+    "id": 25,
+    "name": "Pumble",
+    "cat": "Communications and Messaging",
+    "desc": "Free team messaging app by CAKE.com",
+    "auth": [
+      "API Key"
+    ],
+    "selfServe": "free_tier",
+    "apiType": "REST",
+    "apiBreadth": "limited",
+    "hasMcp": false,
+    "buildability": "challenging",
+    "blocker": "Very limited API surface",
+    "evidenceUrl": "https://pumble.com/help/integrations/api",
+    "confidence": "medium"
+  },
+  {
+    "id": 26,
+    "name": "Discord",
+    "cat": "Communications and Messaging",
+    "desc": "Voice, video, and text communication platform",
+    "auth": [
+      "OAuth2",
+      "Token"
+    ],
+    "selfServe": "free_tier",
+    "apiType": "REST",
+    "apiBreadth": "comprehensive",
+    "hasMcp": true,
+    "buildability": "ready",
+    "blocker": "none",
+    "evidenceUrl": "https://discord.com/developers/docs",
+    "confidence": "high"
+  },
+  {
+    "id": 27,
+    "name": "Telegram",
+    "cat": "Communications and Messaging",
+    "desc": "Cloud-based messaging with bot platform",
+    "auth": [
+      "Token"
+    ],
+    "selfServe": "free_tier",
+    "apiType": "REST",
+    "apiBreadth": "comprehensive",
+    "hasMcp": true,
+    "buildability": "ready",
+    "blocker": "none",
+    "evidenceUrl": "https://core.telegram.org/bots/api",
+    "confidence": "high"
+  },
+  {
+    "id": 28,
+    "name": "WhatsApp Business",
+    "cat": "Communications and Messaging",
+    "desc": "Business messaging via WhatsApp Cloud API",
+    "auth": [
+      "OAuth2",
+      "Token"
+    ],
+    "selfServe": "free_tier",
+    "apiType": "REST",
+    "apiBreadth": "moderate",
+    "hasMcp": false,
+    "buildability": "feasible",
+    "blocker": "Meta app review required for production",
+    "evidenceUrl": "https://developers.facebook.com/docs/whatsapp",
+    "confidence": "high"
+  },
+  {
+    "id": 29,
+    "name": "Aircall",
+    "cat": "Communications and Messaging",
+    "desc": "Cloud-based phone system for teams",
+    "auth": [
+      "OAuth2",
+      "Basic"
+    ],
+    "selfServe": "trial",
+    "apiType": "REST",
+    "apiBreadth": "comprehensive",
+    "hasMcp": false,
+    "buildability": "ready",
+    "blocker": "none",
+    "evidenceUrl": "https://developer.aircall.io",
+    "confidence": "high"
+  },
+  {
+    "id": 30,
+    "name": "Vonage",
+    "cat": "Communications and Messaging",
+    "desc": "Cloud communications APIs (voice, SMS, video)",
+    "auth": [
+      "API Key"
+    ],
+    "selfServe": "free_tier",
+    "apiType": "REST",
+    "apiBreadth": "comprehensive",
+    "hasMcp": false,
+    "buildability": "ready",
+    "blocker": "none",
+    "evidenceUrl": "https://developer.vonage.com",
+    "confidence": "high"
+  },
+  {
+    "id": 31,
+    "name": "Google Ads",
+    "cat": "Marketing Ads Email and Social",
+    "desc": "Online advertising platform by Google",
+    "auth": [
+      "OAuth2"
+    ],
+    "selfServe": "free_tier",
+    "apiType": "REST",
+    "apiBreadth": "comprehensive",
+    "hasMcp": false,
+    "buildability": "feasible",
+    "blocker": "Developer token approval process",
+    "evidenceUrl": "https://developers.google.com/google-ads/api",
+    "confidence": "high"
+  },
+  {
+    "id": 32,
+    "name": "Meta Ads",
+    "cat": "Marketing Ads Email and Social",
+    "desc": "Advertising across Facebook, Instagram, Messenger",
+    "auth": [
+      "OAuth2"
+    ],
+    "selfServe": "free_tier",
+    "apiType": "REST",
+    "apiBreadth": "comprehensive",
+    "hasMcp": false,
+    "buildability": "feasible",
+    "blocker": "App review required",
+    "evidenceUrl": "https://developers.facebook.com/docs/marketing-apis",
+    "confidence": "high"
+  },
+  {
+    "id": 33,
+    "name": "LinkedIn Ads",
+    "cat": "Marketing Ads Email and Social",
+    "desc": "B2B advertising on LinkedIn",
+    "auth": [
+      "OAuth2"
+    ],
+    "selfServe": "free_tier",
+    "apiType": "REST",
+    "apiBreadth": "comprehensive",
+    "hasMcp": false,
+    "buildability": "feasible",
+    "blocker": "Marketing developer platform access",
+    "evidenceUrl": "https://learn.microsoft.com/linkedin/marketing",
+    "confidence": "high"
+  },
+  {
+    "id": 34,
+    "name": "GoHighLevel",
+    "cat": "Marketing Ads Email and Social",
+    "desc": "All-in-one marketing and CRM platform for agencies",
+    "auth": [
+      "OAuth2"
+    ],
+    "selfServe": "trial",
+    "apiType": "REST",
+    "apiBreadth": "comprehensive",
+    "hasMcp": false,
+    "buildability": "ready",
+    "blocker": "none",
+    "evidenceUrl": "https://highlevel.stoplight.io",
+    "confidence": "high"
+  },
+  {
+    "id": 35,
+    "name": "Mailchimp",
+    "cat": "Marketing Ads Email and Social",
+    "desc": "Email marketing and automation platform",
+    "auth": [
+      "OAuth2",
+      "API Key"
+    ],
+    "selfServe": "free_tier",
+    "apiType": "REST",
+    "apiBreadth": "comprehensive",
+    "hasMcp": true,
+    "buildability": "ready",
+    "blocker": "none",
+    "evidenceUrl": "https://mailchimp.com/developer",
+    "confidence": "high"
+  },
+  {
+    "id": 36,
+    "name": "Klaviyo",
+    "cat": "Marketing Ads Email and Social",
+    "desc": "Email and SMS marketing automation for ecommerce",
+    "auth": [
+      "OAuth2",
+      "API Key"
+    ],
+    "selfServe": "free_tier",
+    "apiType": "REST",
+    "apiBreadth": "comprehensive",
+    "hasMcp": false,
+    "buildability": "ready",
+    "blocker": "none",
+    "evidenceUrl": "https://developers.klaviyo.com",
+    "confidence": "high"
+  },
+  {
+    "id": 37,
+    "name": "systeme.io",
+    "cat": "Marketing Ads Email and Social",
+    "desc": "All-in-one funnel builder and marketing platform",
+    "auth": [
+      "API Key"
+    ],
+    "selfServe": "free_tier",
+    "apiType": "REST",
+    "apiBreadth": "limited",
+    "hasMcp": false,
+    "buildability": "feasible",
+    "blocker": "Limited API endpoints",
+    "evidenceUrl": "https://developer.systeme.io/reference",
+    "confidence": "high"
+  },
+  {
+    "id": 38,
+    "name": "Pinterest",
+    "cat": "Marketing Ads Email and Social",
+    "desc": "Visual discovery and bookmarking platform",
+    "auth": [
+      "OAuth2"
+    ],
+    "selfServe": "free_tier",
+    "apiType": "REST",
+    "apiBreadth": "moderate",
+    "hasMcp": false,
+    "buildability": "feasible",
+    "blocker": "App review for production access",
+    "evidenceUrl": "https://developers.pinterest.com",
+    "confidence": "high"
+  },
+  {
+    "id": 39,
+    "name": "Threads (Meta)",
+    "cat": "Marketing Ads Email and Social",
+    "desc": "Text-based social media by Meta/Instagram",
+    "auth": [
+      "OAuth2"
+    ],
+    "selfServe": "free_tier",
+    "apiType": "REST",
+    "apiBreadth": "limited",
+    "hasMcp": false,
+    "buildability": "feasible",
+    "blocker": "Limited to own-account actions, app review needed",
+    "evidenceUrl": "https://developers.facebook.com/docs/threads",
+    "confidence": "high"
+  },
+  {
+    "id": 40,
+    "name": "SendGrid",
+    "cat": "Marketing Ads Email and Social",
+    "desc": "Cloud-based email delivery and marketing",
+    "auth": [
+      "API Key"
+    ],
+    "selfServe": "free_tier",
+    "apiType": "REST",
+    "apiBreadth": "comprehensive",
+    "hasMcp": false,
+    "buildability": "ready",
+    "blocker": "none",
+    "evidenceUrl": "https://docs.sendgrid.com/api-reference",
+    "confidence": "high"
+  },
+  {
+    "id": 41,
+    "name": "Shopify",
+    "cat": "Ecommerce",
+    "desc": "Leading ecommerce platform for online stores",
+    "auth": [
+      "OAuth2",
+      "API Key"
+    ],
+    "selfServe": "trial",
+    "apiType": "Both",
+    "apiBreadth": "comprehensive",
+    "hasMcp": true,
+    "buildability": "ready",
+    "blocker": "none",
+    "evidenceUrl": "https://shopify.dev/docs/api",
+    "confidence": "high"
+  },
+  {
+    "id": 42,
+    "name": "WooCommerce",
+    "cat": "Ecommerce",
+    "desc": "Open-source WordPress ecommerce plugin",
+    "auth": [
+      "OAuth2",
+      "API Key"
+    ],
+    "selfServe": "free_tier",
+    "apiType": "REST",
+    "apiBreadth": "comprehensive",
+    "hasMcp": false,
+    "buildability": "ready",
+    "blocker": "none",
+    "evidenceUrl": "https://woocommerce.com/document/woocommerce-rest-api",
+    "confidence": "high"
+  },
+  {
+    "id": 43,
+    "name": "BigCommerce",
+    "cat": "Ecommerce",
+    "desc": "SaaS ecommerce platform for growing brands",
+    "auth": [
+      "OAuth2",
+      "API Key"
+    ],
+    "selfServe": "trial",
+    "apiType": "Both",
+    "apiBreadth": "comprehensive",
+    "hasMcp": false,
+    "buildability": "ready",
+    "blocker": "none",
+    "evidenceUrl": "https://developer.bigcommerce.com",
+    "confidence": "high"
+  },
+  {
+    "id": 44,
+    "name": "Salesforce Commerce Cloud",
+    "cat": "Ecommerce",
+    "desc": "Enterprise ecommerce within Salesforce ecosystem",
+    "auth": [
+      "OAuth2"
+    ],
+    "selfServe": "contact_sales",
+    "apiType": "REST",
+    "apiBreadth": "comprehensive",
+    "hasMcp": false,
+    "buildability": "challenging",
+    "blocker": "Enterprise license required",
+    "evidenceUrl": "https://developer.salesforce.com/docs/commerce",
+    "confidence": "high"
+  },
+  {
+    "id": 45,
+    "name": "Magento",
+    "cat": "Ecommerce",
+    "desc": "Open-source ecommerce platform by Adobe",
+    "auth": [
+      "OAuth2",
+      "Token"
+    ],
+    "selfServe": "free_tier",
+    "apiType": "Both",
+    "apiBreadth": "comprehensive",
+    "hasMcp": false,
+    "buildability": "ready",
+    "blocker": "none",
+    "evidenceUrl": "https://developer.adobe.com/commerce/webapi",
+    "confidence": "high"
+  },
+  {
+    "id": 46,
+    "name": "Squarespace",
+    "cat": "Ecommerce",
+    "desc": "Website builder with ecommerce capabilities",
+    "auth": [
+      "OAuth2",
+      "API Key"
+    ],
+    "selfServe": "trial",
+    "apiType": "REST",
+    "apiBreadth": "moderate",
+    "hasMcp": false,
+    "buildability": "feasible",
+    "blocker": "API still evolving, limited scope",
+    "evidenceUrl": "https://developers.squarespace.com",
+    "confidence": "high"
+  },
+  {
+    "id": 47,
+    "name": "Ecwid",
+    "cat": "Ecommerce",
+    "desc": "Embeddable ecommerce widget and platform",
+    "auth": [
+      "OAuth2"
+    ],
+    "selfServe": "paid_required",
+    "apiType": "REST",
+    "apiBreadth": "comprehensive",
+    "hasMcp": false,
+    "buildability": "feasible",
+    "blocker": "Paid plan required for API access",
+    "evidenceUrl": "https://api-docs.ecwid.com",
+    "confidence": "high"
+  },
+  {
+    "id": 48,
+    "name": "Gumroad",
+    "cat": "Ecommerce",
+    "desc": "Simple platform for selling digital products",
+    "auth": [
+      "OAuth2",
+      "API Key"
+    ],
+    "selfServe": "free_tier",
+    "apiType": "REST",
+    "apiBreadth": "limited",
+    "hasMcp": false,
+    "buildability": "feasible",
+    "blocker": "Limited API surface",
+    "evidenceUrl": "https://app.gumroad.com/api",
+    "confidence": "high"
+  },
+  {
+    "id": 49,
+    "name": "Amazon Selling Partner",
+    "cat": "Ecommerce",
+    "desc": "APIs for Amazon marketplace sellers",
+    "auth": [
+      "OAuth2"
+    ],
+    "selfServe": "free_tier",
+    "apiType": "REST",
+    "apiBreadth": "comprehensive",
+    "hasMcp": false,
+    "buildability": "challenging",
+    "blocker": "Complex registration and role-based access",
+    "evidenceUrl": "https://developer-docs.amazon.com/sp-api",
+    "confidence": "high"
+  },
+  {
+    "id": 50,
+    "name": "fanbasis",
+    "cat": "Ecommerce",
+    "desc": "Creator monetization and fan engagement platform",
+    "auth": [
+      "OAuth2",
+      "API Key"
+    ],
+    "selfServe": "contact_sales",
+    "apiType": "REST",
+    "apiBreadth": "limited",
+    "hasMcp": false,
+    "buildability": "blocked",
+    "blocker": "Gated API access, minimal public docs",
+    "evidenceUrl": "https://fanbasis.com",
+    "confidence": "low"
+  },
+  {
+    "id": 51,
+    "name": "DataForSEO",
+    "cat": "Data SEO and Scraping",
+    "desc": "SEO and marketing data API platform",
+    "auth": [
+      "Basic"
+    ],
+    "selfServe": "paid_required",
+    "apiType": "REST",
+    "apiBreadth": "comprehensive",
+    "hasMcp": false,
+    "buildability": "ready",
+    "blocker": "none",
+    "evidenceUrl": "https://docs.dataforseo.com",
+    "confidence": "high"
+  },
+  {
+    "id": 52,
+    "name": "SE Ranking",
+    "cat": "Data SEO and Scraping",
+    "desc": "All-in-one SEO platform with rank tracking",
+    "auth": [
+      "API Key"
+    ],
+    "selfServe": "paid_required",
+    "apiType": "REST",
+    "apiBreadth": "comprehensive",
+    "hasMcp": false,
+    "buildability": "ready",
+    "blocker": "none",
+    "evidenceUrl": "https://api.seranking.com",
+    "confidence": "high"
+  },
+  {
+    "id": 53,
+    "name": "Ahrefs",
+    "cat": "Data SEO and Scraping",
+    "desc": "SEO toolset for backlinks, keywords, and audits",
+    "auth": [
+      "API Key"
+    ],
+    "selfServe": "paid_required",
+    "apiType": "REST",
+    "apiBreadth": "comprehensive",
+    "hasMcp": false,
+    "buildability": "ready",
+    "blocker": "none",
+    "evidenceUrl": "https://docs.ahrefs.com",
+    "confidence": "high"
+  },
+  {
+    "id": 54,
+    "name": "MrScraper",
+    "cat": "Data SEO and Scraping",
+    "desc": "AI-powered web scraping platform",
+    "auth": [
+      "API Key"
+    ],
+    "selfServe": "free_tier",
+    "apiType": "REST",
+    "apiBreadth": "moderate",
+    "hasMcp": false,
+    "buildability": "ready",
+    "blocker": "none",
+    "evidenceUrl": "https://docs.mrscraper.com",
+    "confidence": "high"
+  },
+  {
+    "id": 55,
+    "name": "Apify",
+    "cat": "Data SEO and Scraping",
+    "desc": "Web scraping and automation platform",
+    "auth": [
+      "API Key"
+    ],
+    "selfServe": "free_tier",
+    "apiType": "REST",
+    "apiBreadth": "comprehensive",
+    "hasMcp": true,
+    "buildability": "ready",
+    "blocker": "none",
+    "evidenceUrl": "https://docs.apify.com/api/v2",
+    "confidence": "high"
+  },
+  {
+    "id": 56,
+    "name": "Firecrawl",
+    "cat": "Data SEO and Scraping",
+    "desc": "Web scraping API that converts pages to LLM-ready data",
+    "auth": [
+      "API Key"
+    ],
+    "selfServe": "free_tier",
+    "apiType": "REST",
+    "apiBreadth": "moderate",
+    "hasMcp": true,
+    "buildability": "ready",
+    "blocker": "none",
+    "evidenceUrl": "https://docs.firecrawl.dev",
+    "confidence": "high"
+  },
+  {
+    "id": 57,
+    "name": "Bright Data",
+    "cat": "Data SEO and Scraping",
+    "desc": "Web data platform with proxy and scraping APIs",
+    "auth": [
+      "API Key"
+    ],
+    "selfServe": "trial",
+    "apiType": "REST",
+    "apiBreadth": "comprehensive",
+    "hasMcp": false,
+    "buildability": "ready",
+    "blocker": "none",
+    "evidenceUrl": "https://docs.brightdata.com",
+    "confidence": "high"
+  },
+  {
+    "id": 58,
+    "name": "Sherlock",
+    "cat": "Data SEO and Scraping",
+    "desc": "Open-source username search across social networks",
+    "auth": [
+      "None"
+    ],
+    "selfServe": "free_tier",
+    "apiType": "CLI",
+    "apiBreadth": "limited",
+    "hasMcp": false,
+    "buildability": "feasible",
+    "blocker": "CLI tool, no REST API — needs wrapper",
+    "evidenceUrl": "https://github.com/sherlock-project/sherlock",
+    "confidence": "high"
+  },
+  {
+    "id": 59,
+    "name": "Waterfall.io",
+    "cat": "Data SEO and Scraping",
+    "desc": "Contact and company intelligence enrichment API",
+    "auth": [
+      "API Key"
+    ],
+    "selfServe": "contact_sales",
+    "apiType": "REST",
+    "apiBreadth": "moderate",
+    "hasMcp": false,
+    "buildability": "feasible",
+    "blocker": "Contact sales for API access",
+    "evidenceUrl": "https://api.waterfall.io",
+    "confidence": "medium"
+  },
+  {
+    "id": 60,
+    "name": "Clay",
+    "cat": "Data SEO and Scraping",
+    "desc": "Data enrichment and outbound automation platform",
+    "auth": [
+      "API Key"
+    ],
+    "selfServe": "paid_required",
+    "apiType": "REST",
+    "apiBreadth": "limited",
+    "hasMcp": false,
+    "buildability": "blocked",
+    "blocker": "No public API to control Clay — it consumes APIs, not exposes one",
+    "evidenceUrl": "https://clay.com",
+    "confidence": "high"
+  },
+  {
+    "id": 61,
+    "name": "GitHub",
+    "cat": "Developer Infra and Data Platforms",
+    "desc": "Code hosting and collaboration platform",
+    "auth": [
+      "OAuth2",
+      "Token"
+    ],
+    "selfServe": "free_tier",
+    "apiType": "Both",
+    "apiBreadth": "comprehensive",
+    "hasMcp": true,
+    "buildability": "ready",
+    "blocker": "none",
+    "evidenceUrl": "https://docs.github.com/rest",
+    "confidence": "high"
+  },
+  {
+    "id": 62,
+    "name": "Vercel",
+    "cat": "Developer Infra and Data Platforms",
+    "desc": "Frontend cloud platform for deployment",
+    "auth": [
+      "OAuth2",
+      "Token"
+    ],
+    "selfServe": "free_tier",
+    "apiType": "REST",
+    "apiBreadth": "comprehensive",
+    "hasMcp": true,
+    "buildability": "ready",
+    "blocker": "none",
+    "evidenceUrl": "https://vercel.com/docs/rest-api",
+    "confidence": "high"
+  },
+  {
+    "id": 63,
+    "name": "Netlify",
+    "cat": "Developer Infra and Data Platforms",
+    "desc": "Web development and hosting platform",
+    "auth": [
+      "OAuth2",
+      "Token"
+    ],
+    "selfServe": "free_tier",
+    "apiType": "REST",
+    "apiBreadth": "comprehensive",
+    "hasMcp": false,
+    "buildability": "ready",
+    "blocker": "none",
+    "evidenceUrl": "https://docs.netlify.com/api",
+    "confidence": "high"
+  },
+  {
+    "id": 64,
+    "name": "Cloudflare",
+    "cat": "Developer Infra and Data Platforms",
+    "desc": "Web performance, security, and edge computing",
+    "auth": [
+      "API Key",
+      "Token"
+    ],
+    "selfServe": "free_tier",
+    "apiType": "REST",
+    "apiBreadth": "comprehensive",
+    "hasMcp": true,
+    "buildability": "ready",
+    "blocker": "none",
+    "evidenceUrl": "https://developers.cloudflare.com/api",
+    "confidence": "high"
+  },
+  {
+    "id": 65,
+    "name": "Supabase",
+    "cat": "Developer Infra and Data Platforms",
+    "desc": "Open-source Firebase alternative (Postgres-backed)",
+    "auth": [
+      "API Key",
+      "OAuth2"
+    ],
+    "selfServe": "free_tier",
+    "apiType": "REST",
+    "apiBreadth": "comprehensive",
+    "hasMcp": true,
+    "buildability": "ready",
+    "blocker": "none",
+    "evidenceUrl": "https://supabase.com/docs/guides/api",
+    "confidence": "high"
+  },
+  {
+    "id": 66,
+    "name": "Neo4j",
+    "cat": "Developer Infra and Data Platforms",
+    "desc": "Graph database platform",
+    "auth": [
+      "Basic",
+      "Token"
+    ],
+    "selfServe": "free_tier",
+    "apiType": "REST",
+    "apiBreadth": "comprehensive",
+    "hasMcp": true,
+    "buildability": "ready",
+    "blocker": "none",
+    "evidenceUrl": "https://neo4j.com/docs/http-api/current",
+    "confidence": "high"
+  },
+  {
+    "id": 67,
+    "name": "Snowflake",
+    "cat": "Developer Infra and Data Platforms",
+    "desc": "Cloud data warehouse and analytics platform",
+    "auth": [
+      "OAuth2",
+      "Token"
+    ],
+    "selfServe": "trial",
+    "apiType": "REST",
+    "apiBreadth": "comprehensive",
+    "hasMcp": false,
+    "buildability": "ready",
+    "blocker": "none",
+    "evidenceUrl": "https://docs.snowflake.com/en/developer-guide/sql-api",
+    "confidence": "high"
+  },
+  {
+    "id": 68,
+    "name": "MongoDB Atlas",
+    "cat": "Developer Infra and Data Platforms",
+    "desc": "Cloud-hosted MongoDB database service",
+    "auth": [
+      "API Key"
+    ],
+    "selfServe": "free_tier",
+    "apiType": "REST",
+    "apiBreadth": "comprehensive",
+    "hasMcp": true,
+    "buildability": "ready",
+    "blocker": "none",
+    "evidenceUrl": "https://www.mongodb.com/docs/atlas/api",
+    "confidence": "high"
+  },
+  {
+    "id": 69,
+    "name": "Datadog",
+    "cat": "Developer Infra and Data Platforms",
+    "desc": "Cloud monitoring and observability platform",
+    "auth": [
+      "API Key"
+    ],
+    "selfServe": "trial",
+    "apiType": "REST",
+    "apiBreadth": "comprehensive",
+    "hasMcp": false,
+    "buildability": "ready",
+    "blocker": "none",
+    "evidenceUrl": "https://docs.datadoghq.com/api",
+    "confidence": "high"
+  },
+  {
+    "id": 70,
+    "name": "Sentry",
+    "cat": "Developer Infra and Data Platforms",
+    "desc": "Application monitoring and error tracking",
+    "auth": [
+      "OAuth2",
+      "Token"
+    ],
+    "selfServe": "free_tier",
+    "apiType": "REST",
+    "apiBreadth": "comprehensive",
+    "hasMcp": false,
+    "buildability": "ready",
+    "blocker": "none",
+    "evidenceUrl": "https://docs.sentry.io/api",
+    "confidence": "high"
+  },
+  {
+    "id": 71,
+    "name": "Notion",
+    "cat": "Productivity and Project Management",
+    "desc": "All-in-one workspace for notes, docs, and projects",
+    "auth": [
+      "OAuth2",
+      "API Key"
+    ],
+    "selfServe": "free_tier",
+    "apiType": "REST",
+    "apiBreadth": "comprehensive",
+    "hasMcp": true,
+    "buildability": "ready",
+    "blocker": "none",
+    "evidenceUrl": "https://developers.notion.com",
+    "confidence": "high"
+  },
+  {
+    "id": 72,
+    "name": "Airtable",
+    "cat": "Productivity and Project Management",
+    "desc": "Spreadsheet-database hybrid for teams",
+    "auth": [
+      "OAuth2",
+      "API Key"
+    ],
+    "selfServe": "free_tier",
+    "apiType": "REST",
+    "apiBreadth": "comprehensive",
+    "hasMcp": false,
+    "buildability": "ready",
+    "blocker": "none",
+    "evidenceUrl": "https://airtable.com/developers/web/api",
+    "confidence": "high"
+  },
+  {
+    "id": 73,
+    "name": "Linear",
+    "cat": "Productivity and Project Management",
+    "desc": "Issue tracking for modern software teams",
+    "auth": [
+      "OAuth2",
+      "API Key"
+    ],
+    "selfServe": "free_tier",
+    "apiType": "GraphQL",
+    "apiBreadth": "comprehensive",
+    "hasMcp": true,
+    "buildability": "ready",
+    "blocker": "none",
+    "evidenceUrl": "https://developers.linear.app",
+    "confidence": "high"
+  },
+  {
+    "id": 74,
+    "name": "Jira",
+    "cat": "Productivity and Project Management",
+    "desc": "Project and issue tracking by Atlassian",
+    "auth": [
+      "OAuth2",
+      "API Key"
+    ],
+    "selfServe": "free_tier",
+    "apiType": "REST",
+    "apiBreadth": "comprehensive",
+    "hasMcp": true,
+    "buildability": "ready",
+    "blocker": "none",
+    "evidenceUrl": "https://developer.atlassian.com/cloud/jira/platform/rest/v3",
+    "confidence": "high"
+  },
+  {
+    "id": 75,
+    "name": "Asana",
+    "cat": "Productivity and Project Management",
+    "desc": "Work management and project collaboration",
+    "auth": [
+      "OAuth2",
+      "Token"
+    ],
+    "selfServe": "free_tier",
+    "apiType": "REST",
+    "apiBreadth": "comprehensive",
+    "hasMcp": false,
+    "buildability": "ready",
+    "blocker": "none",
+    "evidenceUrl": "https://developers.asana.com/docs",
+    "confidence": "high"
+  },
+  {
+    "id": 76,
+    "name": "Monday.com",
+    "cat": "Productivity and Project Management",
+    "desc": "Work OS for teams with customizable workflows",
+    "auth": [
+      "OAuth2",
+      "API Key"
+    ],
+    "selfServe": "free_tier",
+    "apiType": "GraphQL",
+    "apiBreadth": "comprehensive",
+    "hasMcp": false,
+    "buildability": "ready",
+    "blocker": "none",
+    "evidenceUrl": "https://developer.monday.com/api-reference",
+    "confidence": "high"
+  },
+  {
+    "id": 77,
+    "name": "ClickUp",
+    "cat": "Productivity and Project Management",
+    "desc": "All-in-one project management platform",
+    "auth": [
+      "OAuth2",
+      "API Key"
+    ],
+    "selfServe": "free_tier",
+    "apiType": "REST",
+    "apiBreadth": "comprehensive",
+    "hasMcp": true,
+    "buildability": "ready",
+    "blocker": "none",
+    "evidenceUrl": "https://clickup.com/api",
+    "confidence": "high"
+  },
+  {
+    "id": 78,
+    "name": "Coda",
+    "cat": "Productivity and Project Management",
+    "desc": "Doc-powered workspace with automation",
+    "auth": [
+      "API Key"
+    ],
+    "selfServe": "free_tier",
+    "apiType": "REST",
+    "apiBreadth": "comprehensive",
+    "hasMcp": false,
+    "buildability": "ready",
+    "blocker": "none",
+    "evidenceUrl": "https://coda.io/developers/apis/v1",
+    "confidence": "high"
+  },
+  {
+    "id": 79,
+    "name": "Smartsheet",
+    "cat": "Productivity and Project Management",
+    "desc": "Enterprise work management platform",
+    "auth": [
+      "OAuth2",
+      "API Key"
+    ],
+    "selfServe": "trial",
+    "apiType": "REST",
+    "apiBreadth": "comprehensive",
+    "hasMcp": false,
+    "buildability": "ready",
+    "blocker": "none",
+    "evidenceUrl": "https://smartsheet.redoc.ly",
+    "confidence": "high"
+  },
+  {
+    "id": 80,
+    "name": "Harvest",
+    "cat": "Productivity and Project Management",
+    "desc": "Time tracking and invoicing for teams",
+    "auth": [
+      "OAuth2",
+      "Token"
+    ],
+    "selfServe": "trial",
+    "apiType": "REST",
+    "apiBreadth": "comprehensive",
+    "hasMcp": false,
+    "buildability": "ready",
+    "blocker": "none",
+    "evidenceUrl": "https://help.getharvest.com/api-v2",
+    "confidence": "high"
+  },
+  {
+    "id": 81,
+    "name": "Stripe",
+    "cat": "Finance and Fintech",
+    "desc": "Online payment processing platform",
+    "auth": [
+      "API Key"
+    ],
+    "selfServe": "free_tier",
+    "apiType": "REST",
+    "apiBreadth": "comprehensive",
+    "hasMcp": true,
+    "buildability": "ready",
+    "blocker": "none",
+    "evidenceUrl": "https://stripe.com/docs/api",
+    "confidence": "high"
+  },
+  {
+    "id": 82,
+    "name": "Plaid",
+    "cat": "Finance and Fintech",
+    "desc": "Financial data connectivity and banking APIs",
+    "auth": [
+      "API Key"
+    ],
+    "selfServe": "free_tier",
+    "apiType": "REST",
+    "apiBreadth": "comprehensive",
+    "hasMcp": false,
+    "buildability": "ready",
+    "blocker": "none",
+    "evidenceUrl": "https://plaid.com/docs",
+    "confidence": "high"
+  },
+  {
+    "id": 83,
+    "name": "Binance",
+    "cat": "Finance and Fintech",
+    "desc": "Cryptocurrency exchange platform",
+    "auth": [
+      "API Key"
+    ],
+    "selfServe": "free_tier",
+    "apiType": "REST",
+    "apiBreadth": "comprehensive",
+    "hasMcp": false,
+    "buildability": "ready",
+    "blocker": "none",
+    "evidenceUrl": "https://binance-docs.github.io/apidocs",
+    "confidence": "high"
+  },
+  {
+    "id": 84,
+    "name": "Paygent Connect",
+    "cat": "Finance and Fintech",
+    "desc": "Japanese payment gateway (Mitsubishi UFJ / NTT Data)",
+    "auth": [
+      "API Key"
+    ],
+    "selfServe": "contact_sales",
+    "apiType": "REST",
+    "apiBreadth": "moderate",
+    "hasMcp": false,
+    "buildability": "blocked",
+    "blocker": "Japan-only, requires merchant contract",
+    "evidenceUrl": "https://www.paygent.co.jp",
+    "confidence": "medium"
+  },
+  {
+    "id": 85,
+    "name": "iPayX",
+    "cat": "Finance and Fintech",
+    "desc": "Legacy payment platform (acquired by BillingTree)",
+    "auth": [
+      "API Key"
+    ],
+    "selfServe": "contact_sales",
+    "apiType": "REST",
+    "apiBreadth": "limited",
+    "hasMcp": false,
+    "buildability": "blocked",
+    "blocker": "Product discontinued / acquired",
+    "evidenceUrl": "https://www.billingtree.com",
+    "confidence": "low"
+  },
+  {
+    "id": 86,
+    "name": "QuickBooks",
+    "cat": "Finance and Fintech",
+    "desc": "Small business accounting software by Intuit",
+    "auth": [
+      "OAuth2"
+    ],
+    "selfServe": "free_tier",
+    "apiType": "REST",
+    "apiBreadth": "comprehensive",
+    "hasMcp": false,
+    "buildability": "ready",
+    "blocker": "none",
+    "evidenceUrl": "https://developer.intuit.com/app/developer/qbo/docs/api",
+    "confidence": "high"
+  },
+  {
+    "id": 87,
+    "name": "Xero",
+    "cat": "Finance and Fintech",
+    "desc": "Cloud accounting for small businesses",
+    "auth": [
+      "OAuth2"
+    ],
+    "selfServe": "free_tier",
+    "apiType": "REST",
+    "apiBreadth": "comprehensive",
+    "hasMcp": false,
+    "buildability": "ready",
+    "blocker": "none",
+    "evidenceUrl": "https://developer.xero.com/documentation/api",
+    "confidence": "high"
+  },
+  {
+    "id": 88,
+    "name": "Brex",
+    "cat": "Finance and Fintech",
+    "desc": "Corporate credit cards and spend management",
+    "auth": [
+      "OAuth2",
+      "API Key"
+    ],
+    "selfServe": "free_tier",
+    "apiType": "REST",
+    "apiBreadth": "comprehensive",
+    "hasMcp": false,
+    "buildability": "ready",
+    "blocker": "none",
+    "evidenceUrl": "https://developer.brex.com",
+    "confidence": "high"
+  },
+  {
+    "id": 89,
+    "name": "Ramp",
+    "cat": "Finance and Fintech",
+    "desc": "Corporate card and expense management platform",
+    "auth": [
+      "OAuth2",
+      "API Key"
+    ],
+    "selfServe": "free_tier",
+    "apiType": "REST",
+    "apiBreadth": "comprehensive",
+    "hasMcp": false,
+    "buildability": "ready",
+    "blocker": "none",
+    "evidenceUrl": "https://docs.ramp.com",
+    "confidence": "high"
+  },
+  {
+    "id": 90,
+    "name": "PitchBook",
+    "cat": "Finance and Fintech",
+    "desc": "Private market financial data and research",
+    "auth": [
+      "Token"
+    ],
+    "selfServe": "contact_sales",
+    "apiType": "REST",
+    "apiBreadth": "comprehensive",
+    "hasMcp": false,
+    "buildability": "blocked",
+    "blocker": "Enterprise contract + credit purchase required",
+    "evidenceUrl": "https://pitchbook.com/data/api",
+    "confidence": "high"
+  },
+  {
+    "id": 91,
+    "name": "NotebookLM",
+    "cat": "AI Research and Media-native",
+    "desc": "AI-powered research notebook by Google",
+    "auth": [
+      "OAuth2"
+    ],
+    "selfServe": "contact_sales",
+    "apiType": "REST",
+    "apiBreadth": "limited",
+    "hasMcp": false,
+    "buildability": "blocked",
+    "blocker": "Enterprise-only API, no public access",
+    "evidenceUrl": "https://cloud.google.com/notebooklm",
+    "confidence": "high"
+  },
+  {
+    "id": 92,
+    "name": "Otter AI",
+    "cat": "AI Research and Media-native",
+    "desc": "AI meeting transcription and note-taking",
+    "auth": [
+      "OAuth2"
+    ],
+    "selfServe": "contact_sales",
+    "apiType": "REST",
+    "apiBreadth": "moderate",
+    "hasMcp": true,
+    "buildability": "challenging",
+    "blocker": "Enterprise-only REST API; MCP available more broadly",
+    "evidenceUrl": "https://help.otter.ai",
+    "confidence": "high"
+  },
+  {
+    "id": 93,
+    "name": "Fathom",
+    "cat": "AI Research and Media-native",
+    "desc": "AI meeting assistant for summaries and action items",
+    "auth": [
+      "OAuth2",
+      "API Key"
+    ],
+    "selfServe": "free_tier",
+    "apiType": "REST",
+    "apiBreadth": "moderate",
+    "hasMcp": false,
+    "buildability": "ready",
+    "blocker": "none",
+    "evidenceUrl": "https://docs.fathom.video",
+    "confidence": "high"
+  },
+  {
+    "id": 94,
+    "name": "Consensus",
+    "cat": "AI Research and Media-native",
+    "desc": "AI search engine for peer-reviewed research",
+    "auth": [
+      "API Key",
+      "OAuth2"
+    ],
+    "selfServe": "free_tier",
+    "apiType": "REST",
+    "apiBreadth": "moderate",
+    "hasMcp": true,
+    "buildability": "ready",
+    "blocker": "none",
+    "evidenceUrl": "https://docs.consensus.app",
+    "confidence": "high"
+  },
+  {
+    "id": 95,
+    "name": "Reducto",
+    "cat": "AI Research and Media-native",
+    "desc": "AI document parsing and extraction platform",
+    "auth": [
+      "API Key"
+    ],
+    "selfServe": "free_tier",
+    "apiType": "REST",
+    "apiBreadth": "comprehensive",
+    "hasMcp": true,
+    "buildability": "ready",
+    "blocker": "none",
+    "evidenceUrl": "https://docs.reducto.ai",
+    "confidence": "high"
+  },
+  {
+    "id": 96,
+    "name": "Devin",
+    "cat": "AI Research and Media-native",
+    "desc": "Autonomous AI software engineering agent",
+    "auth": [
+      "API Key"
+    ],
+    "selfServe": "paid_required",
+    "apiType": "REST",
+    "apiBreadth": "comprehensive",
+    "hasMcp": true,
+    "buildability": "ready",
+    "blocker": "none",
+    "evidenceUrl": "https://docs.devin.ai",
+    "confidence": "high"
+  },
+  {
+    "id": 97,
+    "name": "higgsfield",
+    "cat": "AI Research and Media-native",
+    "desc": "AI video and image generation platform",
+    "auth": [
+      "API Key"
+    ],
+    "selfServe": "free_tier",
+    "apiType": "REST",
+    "apiBreadth": "moderate",
+    "hasMcp": true,
+    "buildability": "ready",
+    "blocker": "none",
+    "evidenceUrl": "https://cloud.higgsfield.ai",
+    "confidence": "medium"
+  },
+  {
+    "id": 98,
+    "name": "Mermaid CLI",
+    "cat": "AI Research and Media-native",
+    "desc": "CLI tool for generating diagrams from text",
+    "auth": [
+      "None"
+    ],
+    "selfServe": "free_tier",
+    "apiType": "CLI",
+    "apiBreadth": "limited",
+    "hasMcp": true,
+    "buildability": "feasible",
+    "blocker": "CLI tool, no REST API — needs wrapper",
+    "evidenceUrl": "https://github.com/mermaid-js/mermaid-cli",
+    "confidence": "high"
+  },
+  {
+    "id": 99,
+    "name": "YouTube Transcript",
+    "cat": "AI Research and Media-native",
+    "desc": "API service for extracting YouTube transcripts",
+    "auth": [
+      "API Key"
+    ],
+    "selfServe": "free_tier",
+    "apiType": "REST",
+    "apiBreadth": "limited",
+    "hasMcp": true,
+    "buildability": "ready",
+    "blocker": "none",
+    "evidenceUrl": "https://www.transcriptapi.com",
+    "confidence": "high"
+  },
+  {
+    "id": 100,
+    "name": "Grain",
+    "cat": "AI Research and Media-native",
+    "desc": "AI meeting recording, notes, and insights",
+    "auth": [
+      "OAuth2",
+      "API Key"
+    ],
+    "selfServe": "paid_required",
+    "apiType": "REST",
+    "apiBreadth": "moderate",
+    "hasMcp": false,
+    "buildability": "feasible",
+    "blocker": "Business plan required for API access",
+    "evidenceUrl": "https://grain.com/integrations",
+    "confidence": "high"
+  }
+]

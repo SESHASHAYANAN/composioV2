@@ -1,0 +1,2 @@
+# No external dependencies required - uses Python standard library only
+# json, os, sys, datetime, random are all built-in

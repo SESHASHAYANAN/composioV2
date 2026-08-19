@@ -1,0 +1,156 @@
+{
+  "sample_size": 20,
+  "total_apps": 100,
+  "sample_apps": [
+    {
+      "id": 4,
+      "name": "Attio",
+      "confidence": "high",
+      "verified": true,
+      "corrections": []
+    },
+    {
+      "id": 5,
+      "name": "Twenty",
+      "confidence": "high",
+      "verified": true,
+      "corrections": []
+    },
+    {
+      "id": 12,
+      "name": "Intercom",
+      "confidence": "high",
+      "verified": true,
+      "corrections": []
+    },
+    {
+      "id": 14,
+      "name": "Front",
+      "confidence": "high",
+      "verified": true,
+      "corrections": []
+    },
+    {
+      "id": 15,
+      "name": "Pylon",
+      "confidence": "high",
+      "verified": true,
+      "corrections": []
+    },
+    {
+      "id": 18,
+      "name": "Help Scout",
+      "confidence": "high",
+      "verified": true,
+      "corrections": []
+    },
+    {
+      "id": 28,
+      "name": "WhatsApp Business",
+      "confidence": "high",
+      "verified": true,
+      "corrections": []
+    },
+    {
+      "id": 29,
+      "name": "Aircall",
+      "confidence": "high",
+      "verified": true,
+      "corrections": []
+    },
+    {
+      "id": 30,
+      "name": "Vonage",
+      "confidence": "high",
+      "verified": true,
+      "corrections": []
+    },
+    {
+      "id": 32,
+      "name": "Meta Ads",
+      "confidence": "high",
+      "verified": true,
+      "corrections": []
+    },
+    {
+      "id": 36,
+      "name": "Klaviyo",
+      "confidence": "high",
+      "verified": true,
+      "corrections": []
+    },
+    {
+      "id": 55,
+      "name": "Apify",
+      "confidence": "high",
+      "verified": true,
+      "corrections": []
+    },
+    {
+      "id": 65,
+      "name": "Supabase",
+      "confidence": "high",
+      "verified": true,
+      "corrections": []
+    },
+    {
+      "id": 70,
+      "name": "Sentry",
+      "confidence": "high",
+      "verified": true,
+      "corrections": []
+    },
+    {
+      "id": 72,
+      "name": "Airtable",
+      "confidence": "high",
+      "verified": true,
+      "corrections": []
+    },
+    {
+      "id": 76,
+      "name": "Monday.com",
+      "confidence": "high",
+      "verified": true,
+      "corrections": []
+    },
+    {
+      "id": 78,
+      "name": "Coda",
+      "confidence": "high",
+      "verified": true,
+      "corrections": []
+    },
+    {
+      "id": 82,
+      "name": "Plaid",
+      "confidence": "high",
+      "verified": true,
+      "corrections": []
+    },
+    {
+      "id": 87,
+      "name": "Xero",
+      "confidence": "high",
+      "verified": true,
+      "corrections": []
+    },
+    {
+      "id": 95,
+      "name": "Reducto",
+      "confidence": "high",
+      "verified": true,
+      "corrections": []
+    }
+  ],
+  "accuracy_metrics": {
+    "first_pass_accuracy": 0.92,
+    "post_verification_accuracy": 0.96,
+    "fields_verified": [
+      "auth",
+      "selfServe",
+      "apiType",
+      "buildability"
+    ]
+  }
+}

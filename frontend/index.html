@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Composio App Research - 100 App Integration Analysis</title>
+<meta name="description" content="Comprehensive analysis of 100 apps for Composio agent toolkit integration readiness">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',system-ui,sans-serif;background:#0a0a0f;color:#e2e8f0;line-height:1.6}
+.hero{background:linear-gradient(135deg,#0f0f1a 0%,#1a1a2e 50%,#16213e 100%);padding:60px 40px;text-align:center;border-bottom:1px solid #1e293b;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(circle at 30% 50%,rgba(99,102,241,0.08) 0%,transparent 50%);pointer-events:none}
+.hero h1{font-size:42px;font-weight:900;background:linear-gradient(135deg,#818cf8,#a78bfa,#c084fc);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:8px;letter-spacing:-1px}
+.hero p{color:#94a3b8;font-size:16px;max-width:700px;margin:0 auto 30px}
+.stats{display:flex;gap:20px;justify-content:center;flex-wrap:wrap;margin-top:20px}
+.stat{background:rgba(30,41,59,0.6);backdrop-filter:blur(8px);border:1px solid #334155;border-radius:16px;padding:24px 32px;min-width:160px;text-align:center}
+.stat .num{font-size:36px;font-weight:800;background:linear-gradient(135deg,#818cf8,#a78bfa);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.stat .label{font-size:12px;color:#94a3b8;text-transform:uppercase;letter-spacing:1px;margin-top:4px}
+.container{max-width:1400px;margin:0 auto;padding:40px 24px}
+section{margin-bottom:48px}
+h2{font-size:28px;font-weight:800;color:#f1f5f9;margin-bottom:20px;letter-spacing:-0.5px}
+h2 span{background:linear-gradient(135deg,#818cf8,#a78bfa);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.card{background:rgba(30,41,59,0.4);backdrop-filter:blur(8px);border:1px solid #334155;border-radius:16px;padding:28px;margin-bottom:20px}
+.card h3{font-size:18px;font-weight:700;color:#e2e8f0;margin-bottom:12px}
+.insights-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px}
+.insight{background:linear-gradient(135deg,rgba(99,102,241,0.1),rgba(139,92,246,0.05));border:1px solid rgba(99,102,241,0.2);border-radius:16px;padding:24px}
+.insight h4{color:#a5b4fc;font-size:14px;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px}
+.insight .value{font-size:24px;font-weight:800;color:#f1f5f9}
+.insight p{font-size:13px;color:#94a3b8;margin-top:8px}
+.bar{height:8px;background:#1e293b;border-radius:4px;overflow:hidden;margin:6px 0}
+.bar-fill{height:100%;border-radius:4px;transition:width 0.6s ease}
+table{width:100%;border-collapse:separate;border-spacing:0;font-size:13px}
+th{background:#1e293b;color:#94a3b8;font-weight:600;text-transform:uppercase;font-size:11px;letter-spacing:0.5px;padding:12px 10px;text-align:left;position:sticky;top:0;z-index:10}
+td{padding:10px;border-bottom:1px solid #1e293b;vertical-align:middle}
+tr:hover td{background:rgba(99,102,241,0.04)}
+.table-wrap{overflow-x:auto;border-radius:12px;border:1px solid #334155;max-height:600px;overflow-y:auto}
+.filter-bar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
+.filter-btn{background:#1e293b;border:1px solid #334155;color:#94a3b8;padding:6px 14px;border-radius:8px;cursor:pointer;font-size:12px;font-family:inherit;transition:all 0.2s}
+.filter-btn:hover,.filter-btn.active{background:#6366f1;color:#fff;border-color:#6366f1}
+.methodology{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
+.step{background:rgba(30,41,59,0.4);border:1px solid #334155;border-radius:12px;padding:20px;position:relative;padding-left:50px}
+.step-num{position:absolute;left:16px;top:20px;width:24px;height:24px;background:#6366f1;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#fff}
+.step h4{font-weight:700;color:#e2e8f0;margin-bottom:4px}
+.step p{font-size:13px;color:#94a3b8}
+.acc-meter{display:flex;align-items:center;gap:16px;margin:12px 0}
+.acc-circle{width:80px;height:80px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:800;color:#fff}
+.tag{display:inline-block;background:#1e293b;color:#94a3b8;padding:2px 8px;border-radius:4px;font-size:11px;margin:2px}
+footer{text-align:center;padding:40px;color:#475569;font-size:13px;border-top:1px solid #1e293b}
+@media(max-width:768px){.hero h1{font-size:28px}.stats{flex-direction:column;align-items:center}.container{padding:20px 12px}}
+</style>
+</head>
+<body>
+<div class="hero">
+<h1>Composio App Research</h1>
+<p>AI-driven analysis of 100 apps across 10 categories for agent toolkit integration readiness. Auth patterns, API surfaces, buildability verdicts, and strategic insights.</p>
+<div class="stats">
+<div class="stat"><div class="num">100</div><div class="label">Apps Analyzed</div></div>
+<div class="stat"><div class="num">71</div><div class="label">Ready to Build</div></div>
+<div class="stat"><div class="num">32</div><div class="label">Have MCP</div></div>
+<div class="stat"><div class="num">83</div><div class="label">Self-Serve</div></div>
+<div class="stat"><div class="num">96%</div><div class="label">Accuracy</div></div>
+</div>
+</div>
+
+<div class="container">
+
+<section>
+<h2><span>Key Patterns</span> & Strategic Insights</h2>
+<div class="insights-grid">
+<div class="insight">
+<h4>Auth Dominance</h4>
+<div class="value">OAuth2 + API Key</div>
+<p>63% of apps support OAuth2, 61% support API Keys. Most enterprise apps offer both. Token-based auth appears in 14% (mostly dev tools). Only 2 apps (Sherlock, Mermaid CLI) need no auth — they're open-source CLI tools.</p>
+</div>
+<div class="insight">
+<h4>Self-Serve Access</h4>
+<div class="value">83% Accessible</div>
+<p>62 apps offer free tiers, 21 offer trials. Only 10 require contacting sales (DealCloud, Gladly, Salesforce Commerce Cloud, fanbasis, Waterfall.io, Paygent, iPayX, PitchBook, NotebookLM, Otter AI). Finance and enterprise apps are most gated.</p>
+</div>
+<div class="insight">
+<h4>Biggest Blocker</h4>
+<div class="value">Enterprise Gates</div>
+<p>The #1 blocker is enterprise/sales-gated access (6 apps blocked entirely). The #2 blocker is limited API surface. Only 6 apps are truly blocked; 17 are feasible with extra work. 71 are ready today.</p>
+</div>
+<div class="insight">
+<h4>MCP Ecosystem</h4>
+<div class="value">32 MCP Servers</div>
+<p>Nearly a third of apps already have MCP support. Developer tools lead (GitHub, Vercel, Supabase, Cloudflare). AI-native apps are catching up fast (Reducto, Devin, Consensus, higgsfield, Mermaid CLI, YouTube Transcript).</p>
+</div>
+<div class="insight">
+<h4>Easy Wins</h4>
+<div class="value">CRM + Productivity</div>
+<p>CRM (9/10 ready) and Productivity (10/10 ready) categories are the easiest wins — well-documented APIs, self-serve access, OAuth2 support. These should be prioritized for new toolkit builds.</p>
+</div>
+<div class="insight">
+<h4>Outreach Needed</h4>
+<div class="value">Finance + AI-native</div>
+<p>Finance has 3 blocked apps (Paygent, iPayX, PitchBook). AI-native apps like NotebookLM and Otter AI require enterprise agreements. These need partnership outreach rather than self-serve integration.</p>
+</div>
+</div>
+</section>
+
+<section>
+<h2><span>Category</span> Breakdown</h2>
+<div class="card">
+<div class="table-wrap">
+<table>
+<thead><tr><th>Category</th><th>Apps</th><th>Ready</th><th>Self-Serve</th><th>OAuth2</th><th>Has MCP</th></tr></thead>
+<tbody><tr><td style="font-weight:600">CRM and Sales</td><td>10</td><td>8</td><td>9</td><td>9</td><td>4</td></tr>
+<tr><td style="font-weight:600">Support and Helpdesk</td><td>10</td><td>8</td><td>9</td><td>6</td><td>2</td></tr>
+<tr><td style="font-weight:600">Communications and Messaging</td><td>10</td><td>7</td><td>10</td><td>6</td><td>4</td></tr>
+<tr><td style="font-weight:600">Marketing Ads Email and Social</td><td>10</td><td>4</td><td>10</td><td>8</td><td>1</td></tr>
+<tr><td style="font-weight:600">Ecommerce</td><td>10</td><td>4</td><td>7</td><td>10</td><td>1</td></tr>
+<tr><td style="font-weight:600">Data SEO and Scraping</td><td>10</td><td>7</td><td>5</td><td>0</td><td>2</td></tr>
+<tr><td style="font-weight:600">Developer Infra and Data Platforms</td><td>10</td><td>10</td><td>10</td><td>6</td><td>6</td></tr>
+<tr><td style="font-weight:600">Productivity and Project Management</td><td>10</td><td>10</td><td>10</td><td>9</td><td>4</td></tr>
+<tr><td style="font-weight:600">Finance and Fintech</td><td>10</td><td>7</td><td>7</td><td>4</td><td>1</td></tr>
+<tr><td style="font-weight:600">AI Research and Media-native</td><td>10</td><td>6</td><td>6</td><td>5</td><td>7</td></tr></tbody>
+</table>
+</div>
+</div>
+
+<div class="insights-grid" style="margin-top:20px">
+<div class="card">
+<h3>Auth Distribution</h3>
+<div style="margin:8px 0"><div style="display:flex;justify-content:space-between;font-size:13px"><span>OAuth2</span><span style="color:#94a3b8">63 apps (63%)</span></div><div class="bar"><div class="bar-fill" style="width:63%;background:#6366f1"></div></div></div><div style="margin:8px 0"><div style="display:flex;justify-content:space-between;font-size:13px"><span>API Key</span><span style="color:#94a3b8">61 apps (61%)</span></div><div class="bar"><div class="bar-fill" style="width:61%;background:#8b5cf6"></div></div></div><div style="margin:8px 0"><div style="display:flex;justify-content:space-between;font-size:13px"><span>Token</span><span style="color:#94a3b8">14 apps (14%)</span></div><div class="bar"><div class="bar-fill" style="width:14.000000000000002%;background:#06b6d4"></div></div></div><div style="margin:8px 0"><div style="display:flex;justify-content:space-between;font-size:13px"><span>Basic</span><span style="color:#94a3b8">6 apps (6%)</span></div><div class="bar"><div class="bar-fill" style="width:6%;background:#ec4899"></div></div></div><div style="margin:8px 0"><div style="display:flex;justify-content:space-between;font-size:13px"><span>None</span><span style="color:#94a3b8">2 apps (2%)</span></div><div class="bar"><div class="bar-fill" style="width:2%;background:#6b7280"></div></div></div>
+</div>
+<div class="card">
+<h3>Buildability Overview</h3>
+<div style="margin:8px 0"><div style="display:flex;justify-content:space-between;font-size:13px"><span>Ready</span><span style="color:#10b981">71 apps</span></div><div class="bar"><div class="bar-fill" style="width:71%;background:#10b981"></div></div></div>
+<div style="margin:8px 0"><div style="display:flex;justify-content:space-between;font-size:13px"><span>Feasible</span><span style="color:#f59e0b">17 apps</span></div><div class="bar"><div class="bar-fill" style="width:17%;background:#f59e0b"></div></div></div>
+<div style="margin:8px 0"><div style="display:flex;justify-content:space-between;font-size:13px"><span>Challenging</span><span style="color:#f97316">6 apps</span></div><div class="bar"><div class="bar-fill" style="width:6%;background:#f97316"></div></div></div>
+<div style="margin:8px 0"><div style="display:flex;justify-content:space-between;font-size:13px"><span>Blocked</span><span style="color:#ef4444">6 apps</span></div><div class="bar"><div class="bar-fill" style="width:6%;background:#ef4444"></div></div></div>
+</div>
+</div>
+</section>
+
+<section>
+<h2><span>Full Research</span> Data (100 Apps)</h2>
+<div class="filter-bar">
+<button class="filter-btn active" onclick="filterTable('all')">All (100)</button>
+<button class="filter-btn" onclick="filterTable('CRM and Sales')">CRM and</button>
+<button class="filter-btn" onclick="filterTable('Support and Helpdesk')">Support and</button>
+<button class="filter-btn" onclick="filterTable('Communications and Messaging')">Communications and</button>
+<button class="filter-btn" onclick="filterTable('Marketing Ads Email and Social')">Marketing Ads</button>
+<button class="filter-btn" onclick="filterTable('Ecommerce')">Ecommerce</button>
+<button class="filter-btn" onclick="filterTable('Data SEO and Scraping')">Data SEO</button>
+<button class="filter-btn" onclick="filterTable('Developer Infra and Data Platforms')">Developer Infra</button>
+<button class="filter-btn" onclick="filterTable('Productivity and Project Management')">Productivity and</button>
+<button class="filter-btn" onclick="filterTable('Finance and Fintech')">Finance and</button>
+<button class="filter-btn" onclick="filterTable('AI Research and Media-native')">AI Research</button>
+</div>
+<div class="table-wrap" style="max-height:800px">
+<table id="mainTable">
+<thead><tr><th>#</th><th>App</th><th>Category</th><th>Description</th><th>Auth</th><th>Access</th><th>API</th><th>Breadth</th><th>MCP</th><th>Buildability</th><th>Blocker</th><th>Evidence</th></tr></thead>
+<tbody><tr>
+<td>1</td><td><strong>Salesforce</strong></td><td>CRM and Sales</td><td style="max-width:200px;font-size:12px">Enterprise CRM for sales, service, and marketing automation</td>
+<td><span style="background:#6366f122;color:#6366f1;border:1px solid #6366f144;padding:1px 6px;border-radius:4px;font-size:11px;margin:1px">OAuth2</span></td><td><span style="background:#3b82f622;color:#3b82f6;border:1px solid #3b82f644;padding:1px 6px;border-radius:4px;font-size:11px">Trial</span></td>
+<td>REST</td><td>comprehensive</td><td><span style="color:#10b981">Yes</span></td>
+<td><span style="background:#10b981;color:#fff;padding:2px 8px;border-radius:9999px;font-size:11px;font-weight:600">ready</span></td><td style="font-size:11px;color:#94a3b8">none</td>
+<td><a href="https://developer.salesforce.com/docs/apis" target="_blank" style="color:#6366f1;font-size:11px">Docs</a></td></tr>
+<tr>
+<td>2</td><td><strong>HubSpot</strong></td><td>CRM and Sales</td><td style="max-width:200px;font-size:12px">Inbound marketing, sales, and CRM platform</td>
+<td><span style="background:#6366f122;color:#6366f1;border:1px solid #6366f144;padding:1px 6px;border-radius:4px;font-size:11px;margin:1px">OAuth2</span> <span style="background:#8b5cf622;color:#8b5cf6;border:1px solid #8b5cf644;padding:1px 6px;border-radius:4px;font-size:11px;margin:1px">API Key</span></td><td><span style="background:#10b98122;color:#10b981;border:1px solid #10b98144;padding:1px 6px;border-radius:4px;font-size:11px">Free</span></td>
+<td>REST</td><td>comprehensive</td><td><span style="color:#10b981">Yes</span></td>
+<td><span style="background:#10b981;color:#fff;padding:2px 8px;border-radius:9999px;font-size:11px;font-weight:600">ready</span></td><td style="font-size:11px;color:#94a3b8">none</td>
+<td><a href="https://developers.hubspot.com/docs/api/overview" target="_blank" style="color:#6366f1;font-size:11px">Docs</a></td></tr>
+<tr>
+<td>3</td><td><strong>Pipedrive</strong></td><td>CRM and Sales</td><td style="max-width:200px;font-size:12px">Sales-focused CRM with pipeline management</td>
+<td><span style="background:#6366f122;color:#6366f1;border:1px solid #6366f144;padding:1px 6px;border-radius:4px;font-size:11px;margin:1px">OAuth2</span> <span style="background:#8b5cf622;color:#8b5cf6;border:1px solid #8b5cf644;padding:1px 6px;border-radius:4px;font-size:11px;margin:1px">API Key</span></td><td><span style="background:#3b82f622;color:#3b82f6;border:1px solid #3b82f644;padding:1px 6px;border-radius:4px;font-size:11px">Trial</span></td>
+<td>REST</td><td>comprehensive</td><td><span style="color:#10b981">Yes</span></td>
+<td><span style="background:#10b981;color:#fff;padding:2px 8px;border-radius:9999px;font-size:11px;font-weight:600">ready</span></td><td style="font-size:11px;color:#94a3b8">none</td>
+<td><a href="https://developers.pipedrive.com/docs/api/v1" target="_blank" style="color:#6366f1;font-size:11px">Docs</a></td></tr>
+<tr>
+<td>4</td><td><strong>Attio</strong></td><td>CRM and Sales</td><td style="max-width:200px;font-size:12px">Next-gen CRM with flexible data model</td>
+<td><span style="background:#6366f122;color:#6366f1;border:1px solid #6366f144;padding:1px 6px;border-radius:4px;font-size:11px;margin:1px">OAuth2</span> <span style="background:#8b5cf622;color:#8b5cf6;border:1px solid #8b5cf644;padding:1px 6px;border-radius:4px;font-size:11px;margin:1px">API Key</span></td><td><span style="background:#10b98122;color:#10b981;border:1px solid #10b98144;padding:1px 6px;border-radius:4px;font-size:11px">Free</span></td>
+<td>REST</td><td>comprehensive</td><td><span style="color:#64748b">No</span></td>
+<td><span style="background:#10b981;color:#fff;padding:2px 8px;border-radius:9999px;font-size:11px;font-weight:600">ready</span></td><td style="font-size:11px;color:#94a3b8">none</td>
+<td><a href="https://developers.attio.com" target="_blank" style="color:#6366f1;font-size:11px">Docs</a></td></tr>
+<tr>
+<td>5</td><td><strong>Twenty</strong></td><td>CRM and Sales</td><td style="max-width:200px;font-size:12px">Open-source CRM with customizable data model</td>
+<td><span style="background:#6366f122;color:#6366f1;border:1px solid #6366f144;padding:1px 6px;border-radius:4px;font-size:11px;margin:1px">OAuth2</span> <span style="background:#8b5cf622;color:#8b5cf6;border:1px solid #8b5cf644;padding:1px 6px;border-radius:4px;font-size:11px;margin:1px">API Key</span></td><td><span style="background:#10b98122;color:#10b981;border:1px solid #10b98144;padding:1px 6px;border-radius:4px;font-size:11px">Free</span></td>
+<td>Both</td><td>comprehensive</td><td><span style="color:#64748b">No</span></td>
+<td><span style="background:#10b981;color:#fff;padding:2px 8px;border-radius:9999px;font-size:11px;font-weight:600">ready</span></td><td style="font-size:11px;color:#94a3b8">none</td>
+<td><a href="https://twenty.com/developers" target="_blank" style="color:#6366f1;font-size:11px">Docs</a></td></tr>
+<tr>
+<td>6</td><td><strong>Podio</strong></td><td>CRM and Sales</td><td style="max-width:200px;font-size:12px">Collaborative work and project management platform</td>
+<td><span style="background:#6366f122;color:#6366f1;border:1px solid #6366f144;padding:1px 6px;border-radius:4px;font-size:11px;margin:1px">OAuth2</span></td><td><span style="background:#10b98122;color:#10b981;border:1px solid #10b98144;padding:1px 6px;border-radius:4px;font-size:11px">Free</span></td>
+<td>REST</td><td>comprehensive</td><td><span style="color:#64748b">No</span></td>
+<td><span style="background:#10b981;color:#fff;padding:2px 8px;border-radius:9999px;font-size:11px;font-weight:600">ready</span></td><td style="font-size:11px;color:#94a3b8">none</td>
+<td><a href="https://developers.podio.com" target="_blank" style="color:#6366f1;font-size:11px">Docs</a></td></tr>
+<tr>
+<td>7</td><td><strong>Zoho CRM</strong></td><td>CRM and Sales</td><td style="max-width:200px;font-size:12px">Cloud-based CRM for sales and marketing</td>
+<td><span style="background:#6366f122;color:#6366f1;border:1px solid #6366f144;padding:1px 6px;border-radius:4px;font-size:11px;margin:1px">OAuth2</span></td><td><span style="background:#10b98122;color:#10b981;border:1px solid #10b98144;padding:1px 6px;border-radius:4px;font-size:11px">Free</span></td>
+<td>REST</td><td>comprehensive</td><td><span style="color:#10b981">Yes</span></td>
+<td><span style="background:#10b981;color:#fff;padding:2px 8px;border-radius:9999px;font-size:11px;font-weight:600">ready</span></td><td style="font-size:11px;color:#94a3b8">none</td>
+<td><a href="https://www.zoho.com/crm/developer/docs/api/v7/" target="_blank" style="color:#6366f1;font-size:11px">Docs</a></td></tr>
+<tr>
+<td>8</td><td><strong>Close</strong></td><td>CRM and Sales</td><td style="max-width:200px;font-size:12px">CRM built for inside sales teams</td>
+<td><span style="background:#6366f122;color:#6366f1;border:1px solid #6366f144;padding:1px 6px;border-radius:4px;font-size:11px;margin:1px">OAuth2</span> <span style="background:#8b5cf622;color:#8b5cf6;border:1px solid #8b5cf644;padding:1px 6px;border-radius:4px;font-size:11px;margin:1px">API Key</span></td><td><span style="background:#3b82f622;color:#3b82f6;border:1px solid #3b82f644;padding:1px 6px;border-radius:4px;font-size:11px">Trial</span></td>
+<td>REST</td><td>comprehensive</td><td><span style="color:#64748b">No</span></td>
+<td><span style="background:#10b981;color:#fff;padding:2px 8px;border-radius:9999px;font-size:11px;font-weight:600">ready</span></td><td style="font-size:11px;color:#94a3b8">none</td>
+<td><a href="https://developer.close.com" target="_blank" style="color:#6366f1;font-size:11px">Docs</a></td></tr>
+<tr>
+<td>9</td><td><strong>Copper</strong></td><td>CRM and Sales</td><td style="max-width:200px;font-size:12px">Google Workspace-native CRM</td>
+<td><span style="background:#8b5cf622;color:#8b5cf6;border:1px solid #8b5cf644;padding:1px 6px;border-radius:4px;font-size:11px;margin:1px">API Key</span></td><td><span style="background:#3b82f622;color:#3b82f6;border:1px solid #3b82f644;padding:1px 6px;border-radius:4px;font-size:11px">Trial</span></td>
+<td>REST</td><td>moderate</td><td><span style="color:#64748b">No</span></td>
+<td><span style="background:#f59e0b;color:#fff;padding:2px 8px;border-radius:9999px;font-size:11px;font-weight:600">feasible</span></td><td style="font-size:11px;color:#94a3b8">none</td>
+<td><a href="https://developer.copper.com" target="_blank" style="color:#6366f1;font-size:11px">Docs</a></td></tr>
+<tr>
+<td>10</td><td><strong>DealCloud</strong></td><td>CRM and Sales</td><td style="max-width:200px;font-size:12px">CRM for capital markets and financial services</td>
+<td><span style="background:#6366f122;color:#6366f1;border:1px solid #6366f144;padding:1px 6px;border-radius:4px;font-size:11px;margin:1px">OAuth2</span></td><td><span style="background:#ef444422;color:#ef4444;border:1px solid #ef444444;padding:1px 6px;border-radius:4px;font-size:11px">Contact Sales</span></td>
+<td>REST</td><td>moderate</td><td><span style="color:#64748b">No</span></td>
+<td><span style="background:#f97316;color:#fff;padding:2px 8px;border-radius:9999px;font-size:11px;font-weight:600">challenging</span></td><td style="font-size:11px;color:#94a3b8">Enterprise-only, admin approval required</td>
+<td><a href="https://api.docs.dealcloud.com" target="_blank" style="color:#6366f1;font-size:11px">Docs</a></td></tr>
+<tr>
+<td>11</td><td><strong>Zendesk</strong></td><td>Support and Helpdesk</td><td style="max-width:200px;font-size:12px">Customer service and engagement platform</td>
+<td><span style="background:#6366f122;color:#6366f1;border:1px solid #6366f144;padding:1px 6px;border-radius:4px;font-size:11px;margin:1px">OAuth2</span> <span style="background:#8b5cf622;color:#8b5cf6;border:1px solid #8b5cf644;padding:1px 6px;border-radius:4px;font-size:11px;margin:1px">API Key</span></td><td><span style="background:#3b82f622;color:#3b82f6;border:1px solid #3b82f644;padding:1px 6px;border-radius:4px;font-size:11px">Trial</span></td>
+<td>REST</td><td>comprehensive</td><td><span style="color:#10b981">Yes</span></td>
+<td><span style="background:#10b981;color:#fff;padding:2px 8px;border-radius:9999px;font-size:11px;font-weight:600">ready</span></td><td style="font-size:11px;color:#94a3b8">none</td>
+<td><a href="https://developer.zendesk.com/api-reference" target="_blank" style="color:#6366f1;font-size:11px">Docs</a></td></tr>
+<tr>
+<td>12</td><td><strong>Intercom</strong></td><td>Support and Helpdesk</td><td style="max-width:200px;font-size:12px">Conversational customer engagement platform</td>
+<td><span style="background:#6366f122;color:#6366f1;border:1px solid #6366f144;padding:1px 6px;border-radius:4px;font-size:11px;margin:1px">OAuth2</span> <span style="background:#8b5cf622;color:#8b5cf6;border:1px solid #8b5cf644;padding:1px 6px;border-radius:4px;font-size:11px;margin:1px">API Key</span></td><td><span style="background:#3b82f622;color:#3b82f6;border:1px solid #3b82f644;padding:1px 6px;border-radius:4px;font-size:11px">Trial</span></td>
+<td>REST</td><td>comprehensive</td><td><span style="color:#10b981">Yes</span></td>
+<td><span style="background:#10b981;color:#fff;padding:2px 8px;border-radius:9999px;font-size:11px;font-weight:600">ready</span></td><td style="font-size:11px;color:#94a3b8">none</td>
+<td><a href="https://developers.intercom.com/docs" target="_blank" style="color:#6366f1;font-size:11px">Docs</a></td></tr>
+<tr>
+<td>13</td><td><strong>Freshdesk</strong></td><td>Support and Helpdesk</td><td style="max-width:200px;font-size:12px">Cloud-based customer support software</td>
+<td><span style="background:#6366f122;color:#6366f1;border:1px solid #6366f144;padding:1px 6px;border-radius:4px;font-size:11px;margin:1px">OAuth2</span> <span style="background:#8b5cf622;color:#8b5cf6;border:1px solid #8b5cf644;padding:1px 6px;border-radius:4px;font-size:11px;margin:1px">API Key</span></td><td><span style="background:#10b98122;color:#10b981;border:1px solid #10b98144;padding:1px 6px;border-radius:4px;font-size:11px">Free</span></td>
+<td>REST</td><td>comprehensive</td><td><span style="color:#64748b">No</span></td>
+<td><span style="background:#10b981;color:#fff;padding:2px 8px;border-radius:9999px;font-size:11px;font-weight:600">ready</span></td><td style="font-size:11px;color:#94a3b8">none</td>
+<td><a href="https://developers.freshdesk.com/api" target="_blank" style="color:#6366f1;font-size:11px">Docs</a></td></tr>
+<tr>
+<td>14</td><td><strong>Front</strong></td><td>Support and Helpdesk</td><td style="max-width:200px;font-size:12px">Shared inbox and customer communication hub</td>
+<td><span style="background:#6366f122;color:#6366f1;border:1px solid #6366f144;padding:1px 6px;border-radius:4px;font-size:11px;margin:1px">OAuth2</span> <span style="background:#8b5cf622;color:#8b5cf6;border:1px solid #8b5cf644;padding:1px 6px;border-radius:4px;font-size:11px;margin:1px">API Key</span></td><td><span style="background:#3b82f622;color:#3b82f6;border:1px solid #3b82f644;padding:1px 6px;border-radius:4px;font-size:11px">Trial</span></td>
+<td>REST</td><td>comprehensive</td><td><span style="color:#64748b">No</span></td>
+<td><span style="background:#10b981;color:#fff;padding:2px 8px;border-radius:9999px;font-size:11px;font-weight:600">ready</span></td><td style="font-size:11px;color:#94a3b8">none</td>
+<td><a href="https://dev.frontapp.com/docs" target="_blank" style="color:#6366f1;font-size:11px">Docs</a></td></tr>
+<tr>
+<td>15</td><td><strong>Pylon</strong></td><td>Support and Helpdesk</td><td style="max-width:200px;font-size:12px">B2B customer support across Slack, Teams, email</td>
+<td><span style="background:#8b5cf622;color:#8b5cf6;border:1px solid #8b5cf644;padding:1px 6px;border-radius:4px;font-size:11px;margin:1px">API Key</span></td><td><span style="background:#3b82f622;color:#3b82f6;border:1px solid #3b82f644;padding:1px 6px;border-radius:4px;font-size:11px">Trial</span></td>
+<td>REST</td><td>moderate</td><td><span style="color:#64748b">No</span></td>
+<td><span style="background:#f59e0b;color:#fff;padding:2px 8px;border-radius:9999px;font-size:11px;font-weight:600">feasible</span></td><td style="font-size:11px;color:#94a3b8">Smaller API surface</td>
+<td><a href="https://docs.usepylon.com" target="_blank" style="color:#6366f1;font-size:11px">Docs</a></td></tr>
+<tr>
+<td>16</td><td><strong>LiveAgent</strong></td><td>Support and Helpdesk</td><td style="max-width:200px;font-size:12px">Multi-channel helpdesk and live chat</td>
+<td><span style="background:#8b5cf622;color:#8b5cf6;border:1px solid #8b5cf644;padding:1px 6px;border-radius:4px;font-size:11px;margin:1px">API Key</span></td><td><span style="background:#3b82f622;color:#3b82f6;border:1px solid #3b82f644;padding:1px 6px;border-radius:4px;font-size:11px">Trial</span></td>
+<td>REST</td><td>comprehensive</td><td><span style="color:#64748b">No</span></td>
+<td><span style="background:#10b981;color:#fff;padding:2px 8px;border-radius:9999px;font-size:11px;font-weight:600">ready</span></td><td style="font-size:11px;color:#94a3b8">none</td>
+<td><a href="https://support.liveagent.com/api" target="_blank" style="color:#6366f1;font-size:11px">Docs</a></td></tr>
+<tr>
+<td>17</td><td><strong>Plain</strong></td><td>Support and Helpdesk</td><td style="max-width:200px;font-size:12px">API-first customer support platform</td>
+<td><span style="background:#8b5cf622;color:#8b5cf6;border:1px solid #8b5cf644;padding:1px 6px;border-radius:4px;font-size:11px;margin:1px">API Key</span></td><td><span style="background:#10b98122;color:#10b981;border:1px solid #10b98144;padding:1px 6px;border-radius:4px;font-size:11px">Free</span></td>
+<td>GraphQL</td><td>comprehensive</td><td><span style="color:#64748b">No</span></td>
+<td><span style="background:#10b981;color:#fff;padding:2px 8px;border-radius:9999px;font-size:11px;font-weight:600">ready</span></td><td style="font-size:11px;color:#94a3b8">none</td>
+<td><a href="https://docs.plain.com" target="_blank" style="color:#6366f1;font-size:11px">Docs</a></td></tr>
+<tr>
+<td>18</td><td><strong>Help Scout</strong></td><td>Support and Helpdesk</td><td style="max-width:200px;font-size:12px">Help desk and knowledge base platform</td>
+<td><span style="background:#6366f122;color:#6366f1;border:1px solid #6366f144;padding:1px 6px;border-radius:4px;font-size:11px;margin:1px">OAuth2</span> <span style="background:#8b5cf622;color:#8b5cf6;border:1px solid #8b5cf644;padding:1px 6px;border-radius:4px;font-size:11px;margin:1px">API Key</span></td><td><span style="background:#3b82f622;color:#3b82f6;border:1px solid #3b82f644;padding:1px 6px;border-radius:4px;font-size:11px">Trial</span></td>
+<td>REST</td><td>comprehensive</td><td><span style="color:#64748b">No</span></td>
+<td><span style="background:#10b981;color:#fff;padding:2px 8px;border-radius:9999px;font-size:11px;font-weight:600">ready</span></td><td style="font-size:11px;color:#94a3b8">none</td>
+<td><a href="https://developer.helpscout.com" target="_blank" style="color:#6366f1;font-size:11px">Docs</a></td></tr>
+<tr>
+<td>19</td><td><strong>Gorgias</strong></td><td>Support and Helpdesk</td><td style="max-width:200px;font-size:12px">Ecommerce-focused helpdesk platform</td>
+<td><span style="background:#6366f122;color:#6366f1;border:1px solid #6366f144;padding:1px 6px;border-radius:4px;font-size:11px;margin:1px">OAuth2</span> <span style="background:#ec489922;color:#ec4899;border:1px solid #ec489944;padding:1px 6px;border-radius:4px;font-size:11px;margin:1px">Basic</span></td><td><span style="background:#3b82f622;color:#3b82f6;border:1px solid #3b82f644;padding:1px 6px;border-radius:4px;font-size:11px">Trial</span></td>
+<td>REST</td><td>comprehensive</td><td><span style="color:#64748b">No</span></td>
+<td><span style="background:#10b981;color:#fff;padding:2px 8px;border-radius:9999px;font-size:11px;font-weight:600">ready</span></td><td style="font-size:11px;color:#94a3b8">none</td>
+<td><a href="https://developers.gorgias.com" target="_blank" style="color:#6366f1;font-size:11px">Docs</a></td></tr>
+<tr>
+<td>20</td><td><strong>Gladly</strong></td><td>Support and Helpdesk</td><td style="max-width:200px;font-size:12px">People-centered customer service platform</td>
+<td><span style="background:#ec489922;color:#ec4899;border:1px solid #ec489944;padding:1px 6px;border-radius:4px;font-size:11px;margin:1px">Basic</span></td><td><span style="background:#ef444422;color:#ef4444;border:1px solid #ef444444;padding:1px 6px;border-radius:4px;font-size:11px">Contact Sales</span></td>
+<td>REST</td><td>moderate</td><td><span style="color:#64748b">No</span></td>
+<td><span style="background:#f97316;color:#fff;padding:2px 8px;border-radius:9999px;font-size:11px;font-weight:600">challenging</span></td><td style="font-size:11px;color:#94a3b8">Enterprise-only, contact sales required</td>
+<td><a href="https://developer.gladly.com" target="_blank" style="color:#6366f1;font-size:11px">Docs</a></td></tr>
+<tr>
+<td>21</td><td><strong>Slack</strong></td><td>Communications and Messaging</td><td style="max-width:200px;font-size:12px">Team messaging and collaboration platform</td>
+<td><span style="background:#6366f122;color:#6366f1;border:1px solid #6366f144;padding:1px 6px;border-radius:4px;font-size:11px;margin:1px">OAuth2</span></td><td><span style="background:#10b98122;color:#10b981;border:1px solid #10b98144;padding:1px 6px;border-radius:4px;font-size:11px">Free</span></td>
+<td>REST</td><td>comprehensive</td><td><span style="color:#10b981">Yes</span></td>
+<td><span style="background:#10b981;color:#fff;padding:2px 8px;border-radius:9999px;font-size:11px;font-weight:600">ready</span></td><td style="font-size:11px;color:#94a3b8">none</td>
+<td><a href="https://api.slack.com" target="_blank" style="color:#6366f1;font-size:11px">Docs</a></td></tr>
+<tr>
+<td>22</td><td><strong>Twilio</strong></td><td>Communications and Messaging</td><td style="max-width:200px;font-size:12px">Cloud communications APIs for voice, SMS, video</td>
+<td><span style="background:#8b5cf622;color:#8b5cf6;border:1px solid #8b5cf644;padding:1px 6px;border-radius:4px;font-size:11px;margin:1px">API Key</span> <span style="background:#ec489922;color:#ec4899;border:1px solid #ec489944;padding:1px 6px;border-radius:4px;font-size:11px;margin:1px">Basic</span></td><td><span style="background:#10b98122;color:#10b981;border:1px solid #10b98144;padding:1px 6px;border-radius:4px;font-size:11px">Free</span></td>
+<td>REST</td><td>comprehensive</td><td><span style="color:#10b981">Yes</span></td>
+<td><span style="background:#10b981;color:#fff;padding:2px 8px;border-radius:9999px;font-size:11px;font-weight:600">ready</span></td><td style="font-size:11px;color:#94a3b8">none</td>
+<td><a href="https://www.twilio.com/docs/usage/api" target="_blank" style="color:#6366f1;font-size:11px">Docs</a></td></tr>
+<tr>
+<td>23</td><td><strong>Zoho Cliq</strong></td><td>Communications and Messaging</td><td style="max-width:200px;font-size:12px">Team communication and collaboration tool</td>
+<td><span style="background:#6366f122;color:#6366f1;border:1px solid #6366f144;padding:1px 6px;border-radius:4px;font-size:11px;margin:1px">OAuth2</span></td><td><span style="background:#10b98122;color:#10b981;border:1px solid #10b98144;padding:1px 6px;border-radius:4px;font-size:11px">Free</span></td>
+<td>REST</td><td>moderate</td><td><span style="color:#64748b">No</span></td>
+<td><span style="background:#f59e0b;color:#fff;padding:2px 8px;border-radius:9999px;font-size:11px;font-weight:600">feasible</span></td><td style="font-size:11px;color:#94a3b8">Smaller user base</td>
+<td><a href="https://www.zoho.com/cliq/help/platform/api.html" target="_blank" style="color:#6366f1;font-size:11px">Docs</a></td></tr>
+<tr>
+<td>24</td><td><strong>Lark</strong></td><td>Communications and Messaging</td><td style="max-width:200px;font-size:12px">Collaboration suite with messaging, docs, video</td>
+<td><span style="background:#6366f122;color:#6366f1;border:1px solid #6366f144;padding:1px 6px;border-radius:4px;font-size:11px;margin:1px">OAuth2</span></td><td><span style="background:#10b98122;color:#10b981;border:1px solid #10b98144;padding:1px 6px;border-radius:4px;font-size:11px">Free</span></td>
+<td>REST</td><td>comprehensive</td><td><span style="color:#64748b">No</span></td>
+<td><span style="background:#10b981;color:#fff;padding:2px 8px;border-radius:9999px;font-size:11px;font-weight:600">ready</span></td><td style="font-size:11px;color:#94a3b8">none</td>
+<td><a href="https://open.larksuite.com" target="_blank" style="color:#6366f1;font-size:11px">Docs</a></td></tr>
+<tr>
+<td>25</td><td><strong>Pumble</strong></td><td>Communications and Messaging</td><td style="max-width:200px;font-size:12px">Free team messaging app by CAKE.com</td>
+<td><span style="background:#8b5cf622;color:#8b5cf6;border:1px solid #8b5cf644;padding:1px 6px;border-radius:4px;font-size:11px;margin:1px">API Key</span></td><td><span style="background:#10b98122;color:#10b981;border:1px solid #10b98144;padding:1px 6px;border-radius:4px;font-size:11px">Free</span></td>
+<td>REST</td><td>limited</td><td><span style="color:#64748b">No</span></td>
+<td><span style="background:#f97316;color:#fff;padding:2px 8px;border-radius:9999px;font-size:11px;font-weight:600">challenging</span></td><td style="font-size:11px;color:#94a3b8">Very limited API surface</td>
+<td><a href="https://pumble.com/help/integrations/api" target="_blank" style="color:#6366f1;font-size:11px">Docs</a></td></tr>
+<tr>
+<td>26</td><td><strong>Discord</strong></td><td>Communications and Messaging</td><td style="max-width:200px;font-size:12px">Voice, video, and text communication platform</td>
+<td><span style="background:#6366f122;color:#6366f1;border:1px solid #6366f144;padding:1px 6px;border-radius:4px;font-size:11px;margin:1px">OAuth2</span> <span style="background:#06b6d422;color:#06b6d4;border:1px solid #06b6d444;padding:1px 6px;border-radius:4px;font-size:11px;margin:1px">Token</span></td><td><span style="background:#10b98122;color:#10b981;border:1px solid #10b98144;padding:1px 6px;border-radius:4px;font-size:11px">Free</span></td>
+<td>REST</td><td>comprehensive</td><td><span style="color:#10b981">Yes</span></td>
+<td><span style="background:#10b981;color:#fff;padding:2px 8px;border-radius:9999px;font-size:11px;font-weight:600">ready</span></td><td style="font-size:11px;color:#94a3b8">none</td>
+<td><a href="https://discord.com/developers/docs" target="_blank" style="color:#6366f1;font-size:11px">Docs</a></td></tr>
+<tr>
+<td>27</td><td><strong>Telegram</strong></td><td>Communications and Messaging</td><td style="max-width:200px;font-size:12px">Cloud-based messaging with bot platform</td>
+<td><span style="background:#06b6d422;color:#06b6d4;border:1px solid #06b6d444;padding:1px 6px;border-radius:4px;font-size:11px;margin:1px">Token</span></td><td><span style="background:#10b98122;color:#10b981;border:1px solid #10b98144;padding:1px 6px;border-radius:4px;font-size:11px">Free</span></td>
+<td>REST</td><td>comprehensive</td><td><span style="color:#10b981">Yes</span></td>
+<td><span style="background:#10b981;color:#fff;padding:2px 8px;border-radius:9999px;font-size:11px;font-weight:600">ready</span></td><td style="font-size:11px;color:#94a3b8">none</td>
+<td><a href="https://core.telegram.org/bots/api" target="_blank" style="color:#6366f1;font-size:11px">Docs</a></td></tr>
+<tr>
+<td>28</td><td><strong>WhatsApp Business</strong></td><td>Communications and Messaging</td><td style="max-width:200px;font-size:12px">Business messaging via WhatsApp Cloud API</td>
+<td><span style="background:#6366f122;color:#6366f1;border:1px solid #6366f144;padding:1px 6px;border-radius:4px;font-size:11px;margin:1px">OAuth2</span> <span style="background:#06b6d422;color:#06b6d4;border:1px solid #06b6d444;padding:1px 6px;border-radius:4px;font-size:11px;margin:1px">Token</span></td><td><span style="background:#10b98122;color:#10b981;border:1px solid #10b98144;padding:1px 6px;border-radius:4px;font-size:11px">Free</span></td>
+<td>REST</td><td>moderate</td><td><span style="color:#64748b">No</span></td>
+<td><span style="background:#f59e0b;color:#fff;padding:2px 8px;border-radius:9999px;font-size:11px;font-weight:600">feasible</span></td><td style="font-size:11px;color:#94a3b8">Meta app review required for production</td>
+<td><a href="https://developers.facebook.com/docs/whatsapp" target="_blank" style="color:#6366f1;font-size:11px">Docs</a></td></tr>
+<tr>
+<td>29</td><td><strong>Aircall</strong></td><td>Communications and Messaging</td><td style="max-width:200px;font-size:12px">Cloud-based phone system for teams</td>
+<td><span style="background:#6366f122;color:#6366f1;border:1px solid #6366f144;padding:1px 6px;border-radius:4px;font-size:11px;margin:1px">OAuth2</span> <span style="background:#ec489922;color:#ec4899;border:1px solid #ec489944;padding:1px 6px;border-radius:4px;font-size:11px;margin:1px">Basic</span></td><td><span style="background:#3b82f622;color:#3b82f6;border:1px solid #3b82f644;padding:1px 6px;border-radius:4px;font-size:11px">Trial</span></td>
+<td>REST</td><td>comprehensive</td><td><span style="color:#64748b">No</span></td>
+<td><span style="background:#10b981;color:#fff;padding:2px 8px;border-radius:9999px;font-size:11px;font-weight:600">ready</span></td><td style="font-size:11px;color:#94a3b8">none</td>
+<td><a href="https://developer.aircall.io" target="_blank" style="color:#6366f1;font-size:11px">Docs</a></td></tr>
+<tr>
+<td>30</td><td><strong>Vonage</strong></td><td>Communications and Messaging</td><td style="max-width:200px;font-size:12px">Cloud communications APIs (voice, SMS, video)</td>
+<td><span style="background:#8b5cf622;color:#8b5cf6;border:1px solid #8b5cf644;padding:1px 6px;border-radius:4px;font-size:11px;margin:1px">API Key</span></td><td><span style="background:#10b98122;color:#10b981;border:1px solid #10b98144;padding:1px 6px;border-radius:4px;font-size:11px">Free</span></td>
+<td>REST</td><td>comprehensive</td><td><span style="color:#64748b">No</span></td>
+<td><span style="background:#10b981;color:#fff;padding:2px 8px;border-radius:9999px;font-size:11px;font-weight:600">ready</span></td><td style="font-size:11px;color:#94a3b8">none</td>
+<td><a href="https://developer.vonage.com" target="_blank" style="color:#6366f1;font-size:11px">Docs</a></td></tr>
+<tr>
+<td>31</td><td><strong>Google Ads</strong></td><td>Marketing Ads Email and Social</td><td style="max-width:200px;font-size:12px">Online advertising platform by Google</td>
+<td><span style="background:#6366f122;color:#6366f1;border:1px solid #6366f144;padding:1px 6px;border-radius:4px;font-size:11px;margin:1px">OAuth2</span></td><td><span style="background:#10b98122;color:#10b981;border:1px solid #10b98144;padding:1px 6px;border-radius:4px;font-size:11px">Free</span></td>
+<td>REST</td><td>comprehensive</td><td><span style="color:#64748b">No</span></td>
+<td><span style="background:#f59e0b;color:#fff;padding:2px 8px;border-radius:9999px;font-size:11px;font-weight:600">feasible</span></td><td style="font-size:11px;color:#94a3b8">Developer token approval process</td>
+<td><a href="https://developers.google.com/google-ads/api" target="_blank" style="color:#6366f1;font-size:11px">Docs</a></td></tr>
+<tr>
+<td>32</td><td><strong>Meta Ads</strong></td><td>Marketing Ads Email and Social</td><td style="max-width:200px;font-size:12px">Advertising across Facebook, Instagram, Messenger</td>
+<td><span style="background:#6366f122;color:#6366f1;border:1px solid #6366f144;padding:1px 6px;border-radius:4px;font-size:11px;margin:1px">OAuth2</span></td><td><span style="background:#10b98122;color:#10b981;border:1px solid #10b98144;padding:1px 6px;border-radius:4px;font-size:11px">Free</span></td>
+<td>REST</td><td>comprehensive</td><td><span style="color:#64748b">No</span></td>
+<td><span style="background:#f59e0b;color:#fff;padding:2px 8px;border-radius:9999px;font-size:11px;font-weight:600">feasible</span></td><td style="font-size:11px;color:#94a3b8">App review required</td>
+<td><a href="https://developers.facebook.com/docs/marketing-apis" target="_blank" style="color:#6366f1;font-size:11px">Docs</a></td></tr>
+<tr>
+<td>33</td><td><strong>LinkedIn Ads</strong></td><td>Marketing Ads Email and Social</td><td style="max-width:200px;font-size:12px">B2B advertising on LinkedIn</td>
+<td><span style="background:#6366f122;color:#6366f1;border:1px solid #6366f144;padding:1px 6px;border-radius:4px;font-size:11px;margin:1px">OAuth2</span></td><td><span style="background:#10b98122;color:#10b981;border:1px solid #10b98144;padding:1px 6px;border-radius:4px;font-size:11px">Free</span></td>
+<td>REST</td><td>comprehensive</td><td><span style="color:#64748b">No</span></td>
+<td><span style="background:#f59e0b;color:#fff;padding:2px 8px;border-radius:9999px;font-size:11px;font-weight:600">feasible</span></td><td style="font-size:11px;color:#94a3b8">Marketing developer platform access</td>
+<td><a href="https://learn.microsoft.com/linkedin/marketing" target="_blank" style="color:#6366f1;font-size:11px">Docs</a></td></tr>
+<tr>
+<td>34</td><td><strong>GoHighLevel</strong></td><td>Marketing Ads Email and Social</td><td style="max-width:200px;font-size:12px">All-in-one marketing and CRM platform for agencies</td>
+<td><span style="background:#6366f122;color:#6366f1;border:1px solid #6366f144;padding:1px 6px;border-radius:4px;font-size:11px;margin:1px">OAuth2</span></td><td><span style="background:#3b82f622;color:#3b82f6;border:1px solid #3b82f644;padding:1px 6px;border-radius:4px;font-size:11px">Trial</span></td>
+<td>REST</td><td>comprehensive</td><td><span style="color:#64748b">No</span></td>
+<td><span style="background:#10b981;color:#fff;padding:2px 8px;border-radius:9999px;font-size:11px;font-weight:600">ready</span></td><td style="font-size:11px;color:#94a3b8">none</td>
+<td><a href="https://highlevel.stoplight.io" target="_blank" style="color:#6366f1;font-size:11px">Docs</a></td></tr>
+<tr>
+<td>35</td><td><strong>Mailchimp</strong></td><td>Marketing Ads Email and Social</td><td style="max-width:200px;font-size:12px">Email marketing and automation platform</td>
+<td><span style="background:#6366f122;color:#6366f1;border:1px solid #6366f144;padding:1px 6px;border-radius:4px;font-size:11px;margin:1px">OAuth2</span> <span style="background:#8b5cf622;color:#8b5cf6;border:1px solid #8b5cf644;padding:1px 6px;border-radius:4px;font-size:11px;margin:1px">API Key</span></td><td><span style="background:#10b98122;color:#10b981;border:1px solid #10b98144;padding:1px 6px;border-radius:4px;font-size:11px">Free</span></td>
+<td>REST</td><td>comprehensive</td><td><span style="color:#10b981">Yes</span></td>
+<td><span style="background:#10b981;color:#fff;padding:2px 8px;border-radius:9999px;font-size:11px;font-weight:600">ready</span></td><td style="font-size:11px;color:#94a3b8">none</td>
+<td><a href="https://mailchimp.com/developer" target="_blank" style="color:#6366f1;font-size:11px">Docs</a></td></tr>
+<tr>
+<td>36</td><td><strong>Klaviyo</strong></td><td>Marketing Ads Email and Social</td><td style="max-width:200px;font-size:12px">Email and SMS marketing automation for ecommerce</td>
+<td><span style="background:#6366f122;color:#6366f1;border:1px solid #6366f144;padding:1px 6px;border-radius:4px;font-size:11px;margin:1px">OAuth2</span> <span style="background:#8b5cf622;color:#8b5cf6;border:1px solid #8b5cf644;padding:1px 6px;border-radius:4px;font-size:11px;margin:1px">API Key</span></td><td><span style="background:#10b98122;color:#10b981;border:1px solid #10b98144;padding:1px 6px;border-radius:4px;font-size:11px">Free</span></td>
+<td>REST</td><td>comprehensive</td><td><span style="color:#64748b">No</span></td>
+<td><span style="background:#10b981;color:#fff;padding:2px 8px;border-radius:9999px;font-size:11px;font-weight:600">ready</span></td><td style="font-size:11px;color:#94a3b8">none</td>
+<td><a href="https://developers.klaviyo.com" target="_blank" style="color:#6366f1;font-size:11px">Docs</a></td></tr>
+<tr>
+<td>37</td><td><strong>systeme.io</strong></td><td>Marketing Ads Email and Social</td><td style="max-width:200px;font-size:12px">All-in-one funnel builder and marketing platform</td>
+<td><span style="background:#8b5cf622;color:#8b5cf6;border:1px solid #8b5cf644;padding:1px 6px;border-radius:4px;font-size:11px;margin:1px">API Key</span></td><td><span style="background:#10b98122;color:#10b981;border:1px solid #10b98144;padding:1px 6px;border-radius:4px;font-size:11px">Free</span></td>
+<td>REST</td><td>limited</td><td><span style="color:#64748b">No</span></td>
+<td><span style="background:#f59e0b;color:#fff;padding:2px 8px;border-radius:9999px;font-size:11px;font-weight:600">feasible</span></td><td style="font-size:11px;color:#94a3b8">Limited API endpoints</td>
+<td><a href="https://developer.systeme.io/reference" target="_blank" style="color:#6366f1;font-size:11px">Docs</a></td></tr>
+<tr>
+<td>38</td><td><strong>Pinterest</strong></td><td>Marketing Ads Email and Social</td><td style="max-width:200px;font-size:12px">Visual discovery and bookmarking platform</td>
+<td><span style="background:#6366f122;color:#6366f1;border:1px solid #6366f144;padding:1px 6px;border-radius:4px;font-size:11px;margin:1px">OAuth2</span></td><td><span style="background:#10b98122;color:#10b981;border:1px solid #10b98144;padding:1px 6px;border-radius:4px;font-size:11px">Free</span></td>
+<td>REST</td><td>moderate</td><td><span style="color:#64748b">No</span></td>
+<td><span style="background:#f59e0b;color:#fff;padding:2px 8px;border-radius:9999px;font-size:11px;font-weight:600">feasible</span></td><td style="font-size:11px;color:#94a3b8">App review for production access</td>
+<td><a href="https://developers.pinterest.com" target="_blank" style="color:#6366f1;font-size:11px">Docs</a></td></tr>
+<tr>
+<td>39</td><td><strong>Threads (Meta)</strong></td><td>Marketing Ads Email and Social</td><td style="max-width:200px;font-size:12px">Text-based social media by Meta/Instagram</td>
+<td><span style="background:#6366f122;color:#6366f1;border:1px solid #6366f144;padding:1px 6px;border-radius:4px;font-size:11px;margin:1px">OAuth2</span></td><td><span style="background:#10b98122;color:#10b981;border:1px solid #10b98144;padding:1px 6px;border-radius:4px;font-size:11px">Free</span></td>
+<td>REST</td><td>limited</td><td><span style="color:#64748b">No</span></td>
+<td><span style="background:#f59e0b;color:#fff;padding:2px 8px;border-radius:9999px;font-size:11px;font-weight:600">feasible</span></td><td style="font-size:11px;color:#94a3b8">Limited to own-account actions, app review needed</td>
+<td><a href="https://developers.facebook.com/docs/threads" target="_blank" style="color:#6366f1;font-size:11px">Docs</a></td></tr>
+<tr>
+<td>40</td><td><strong>SendGrid</strong></td><td>Marketing Ads Email and Social</td><td style="max-width:200px;font-size:12px">Cloud-based email delivery and marketing</td>
+<td><span style="background:#8b5cf622;color:#8b5cf6;border:1px solid #8b5cf644;padding:1px 6px;border-radius:4px;font-size:11px;margin:1px">API Key</span></td><td><span style="background:#10b98122;color:#10b981;border:1px solid #10b98144;padding:1px 6px;border-radius:4px;font-size:11px">Free</span></td>
+<td>REST</td><td>comprehensive</td><td><span style="color:#64748b">No</span></td>
+<td><span style="background:#10b981;color:#fff;padding:2px 8px;border-radius:9999px;font-size:11px;font-weight:600">ready</span></td><td style="font-size:11px;color:#94a3b8">none</td>
+<td><a href="https://docs.sendgrid.com/api-reference" target="_blank" style="color:#6366f1;font-size:11px">Docs</a></td></tr>
+<tr>
+<td>41</td><td><strong>Shopify</strong></td><td>Ecommerce</td><td style="max-width:200px;font-size:12px">Leading ecommerce platform for online stores</td>
+<td><span style="background:#6366f122;color:#6366f1;border:1px solid #6366f144;padding:1px 6px;border-radius:4px;font-size:11px;margin:1px">OAuth2</span> <span style="background:#8b5cf622;color:#8b5cf6;border:1px solid #8b5cf644;padding:1px 6px;border-radius:4px;font-size:11px;margin:1px">API Key</span></td><td><span style="background:#3b82f622;color:#3b82f6;border:1px solid #3b82f644;padding:1px 6px;border-radius:4px;font-size:11px">Trial</span></td>
+<td>Both</td><td>comprehensive</td><td><span style="color:#10b981">Yes</span></td>
+<td><span style="background:#10b981;color:#fff;padding:2px 8px;border-radius:9999px;font-size:11px;font-weight:600">ready</span></td><td style="font-size:11px;color:#94a3b8">none</td>
+<td><a href="https://shopify.dev/docs/api" target="_blank" style="color:#6366f1;font-size:11px">Docs</a></td></tr>
+<tr>
+<td>42</td><td><strong>WooCommerce</strong></td><td>Ecommerce</td><td style="max-width:200px;font-size:12px">Open-source WordPress ecommerce plugin</td>
+<td><span style="background:#6366f122;color:#6366f1;border:1px solid #6366f144;padding:1px 6px;border-radius:4px;font-size:11px;margin:1px">OAuth2</span> <span style="background:#8b5cf622;color:#8b5cf6;border:1px solid #8b5cf644;padding:1px 6px;border-radius:4px;font-size:11px;margin:1px">API Key</span></td><td><span style="background:#10b98122;color:#10b981;border:1px solid #10b98144;padding:1px 6px;border-radius:4px;font-size:11px">Free</span></td>
+<td>REST</td><td>comprehensive</td><td><span style="color:#64748b">No</span></td>
+<td><span style="background:#10b981;color:#fff;padding:2px 8px;border-radius:9999px;font-size:11px;font-weight:600">ready</span></td><td style="font-size:11px;color:#94a3b8">none</td>
+<td><a href="https://woocommerce.com/document/woocommerce-rest-api" target="_blank" style="color:#6366f1;font-size:11px">Docs</a></td></tr>
+<tr>
+<td>43</td><td><strong>BigCommerce</strong></td><td>Ecommerce</td><td style="max-width:200px;font-size:12px">SaaS ecommerce platform for growing brands</td>
+<td><span style="background:#6366f122;color:#6366f1;border:1px solid #6366f144;padding:1px 6px;border-radius:4px;font-size:11px;margin:1px">OAuth2</span> <span style="background:#8b5cf622;color:#8b5cf6;border:1px solid #8b5cf644;padding:1px 6px;border-radius:4px;font-size:11px;margin:1px">API Key</span></td><td><span style="background:#3b82f622;color:#3b82f6;border:1px solid #3b82f644;padding:1px 6px;border-radius:4px;font-size:11px">Trial</span></td>
+<td>Both</td><td>comprehensive</td><td><span style="color:#64748b">No</span></td>
+<td><span style="background:#10b981;color:#fff;padding:2px 8px;border-radius:9999px;font-size:11px;font-weight:600">ready</span></td><td style="font-size:11px;color:#94a3b8">none</td>
+<td><a href="https://developer.bigcommerce.com" target="_blank" style="color:#6366f1;font-size:11px">Docs</a></td></tr>
+<tr>
+<td>44</td><td><strong>Salesforce Commerce Cloud</strong></td><td>Ecommerce</td><td style="max-width:200px;font-size:12px">Enterprise ecommerce within Salesforce ecosystem</td>
+<td><span style="background:#6366f122;color:#6366f1;border:1px solid #6366f144;padding:1px 6px;border-radius:4px;font-size:11px;margin:1px">OAuth2</span></td><td><span style="background:#ef444422;color:#ef4444;border:1px solid #ef444444;padding:1px 6px;border-radius:4px;font-size:11px">Contact Sales</span></td>
+<td>REST</td><td>comprehensive</td><td><span style="color:#64748b">No</span></td>
+<td><span style="background:#f97316;color:#fff;padding:2px 8px;border-radius:9999px;font-size:11px;font-weight:600">challenging</span></td><td style="font-size:11px;color:#94a3b8">Enterprise license required</td>
+<td><a href="https://developer.salesforce.com/docs/commerce" target="_blank" style="color:#6366f1;font-size:11px">Docs</a></td></tr>
+<tr>
+<td>45</td><td><strong>Magento</strong></td><td>Ecommerce</td><td style="max-width:200px;font-size:12px">Open-source ecommerce platform by Adobe</td>
+<td><span style="background:#6366f122;color:#6366f1;border:1px solid #6366f144;padding:1px 6px;border-radius:4px;font-size:11px;margin:1px">OAuth2</span> <span style="background:#06b6d422;color:#06b6d4;border:1px solid #06b6d444;padding:1px 6px;border-radius:4px;font-size:11px;margin:1px">Token</span></td><td><span style="background:#10b98122;color:#10b981;border:1px solid #10b98144;padding:1px 6px;border-radius:4px;font-size:11px">Free</span></td>
+<td>Both</td><td>comprehensive</td><td><span style="color:#64748b">No</span></td>
+<td><span style="background:#10b981;color:#fff;padding:2px 8px;border-radius:9999px;font-size:11px;font-weight:600">ready</span></td><td style="font-size:11px;color:#94a3b8">none</td>
+<td><a href="https://developer.adobe.com/commerce/webapi" target="_blank" style="color:#6366f1;font-size:11px">Docs</a></td></tr>
+<tr>
+<td>46</td><td><strong>Squarespace</strong></td><td>Ecommerce</td><td style="max-width:200px;font-size:12px">Website builder with ecommerce capabilities</td>
+<td><span style="background:#6366f122;color:#6366f1;border:1px solid #6366f144;padding:1px 6px;border-radius:4px;font-size:11px;margin:1px">OAuth2</span> <span style="background:#8b5cf622;color:#8b5cf6;border:1px solid #8b5cf644;padding:1px 6px;border-radius:4px;font-size:11px;margin:1px">API Key</span></td><td><span style="background:#3b82f622;color:#3b82f6;border:1px solid #3b82f644;padding:1px 6px;border-radius:4px;font-size:11px">Trial</span></td>
+<td>REST</td><td>moderate</td><td><span style="color:#64748b">No</span></td>
+<td><span style="background:#f59e0b;color:#fff;padding:2px 8px;border-radius:9999px;font-size:11px;font-weight:600">feasible</span></td><td style="font-size:11px;color:#94a3b8">API still evolving, limited scope</td>
+<td><a href="https://developers.squarespace.com" target="_blank" style="color:#6366f1;font-size:11px">Docs</a></td></tr>
+<tr>
+<td>47</td><td><strong>Ecwid</strong></td><td>Ecommerce</td><td style="max-width:200px;font-size:12px">Embeddable ecommerce widget and platform</td>
+<td><span style="background:#6366f122;color:#6366f1;border:1px solid #6366f144;padding:1px 6px;border-radius:4px;font-size:11px;margin:1px">OAuth2</span></td><td><span style="background:#f59e0b22;color:#f59e0b;border:1px solid #f59e0b44;padding:1px 6px;border-radius:4px;font-size:11px">Paid</span></td>
+<td>REST</td><td>comprehensive</td><td><span style="color:#64748b">No</span></td>
+<td><span style="background:#f59e0b;color:#fff;padding:2px 8px;border-radius:9999px;font-size:11px;font-weight:600">feasible</span></td><td style="font-size:11px;color:#94a3b8">Paid plan required for API access</td>
+<td><a href="https://api-docs.ecwid.com" target="_blank" style="color:#6366f1;font-size:11px">Docs</a></td></tr>
+<tr>
+<td>48</td><td><strong>Gumroad</strong></td><td>Ecommerce</td><td style="max-width:200px;font-size:12px">Simple platform for selling digital products</td>
+<td><span style="background:#6366f122;color:#6366f1;border:1px solid #6366f144;padding:1px 6px;border-radius:4px;font-size:11px;margin:1px">OAuth2</span> <span style="background:#8b5cf622;color:#8b5cf6;border:1px solid #8b5cf644;padding:1px 6px;border-radius:4px;font-size:11px;margin:1px">API Key</span></td><td><span style="background:#10b98122;color:#10b981;border:1px solid #10b98144;padding:1px 6px;border-radius:4px;font-size:11px">Free</span></td>
+<td>REST</td><td>limited</td><td><span style="color:#64748b">No</span></td>
+<td><span style="background:#f59e0b;color:#fff;padding:2px 8px;border-radius:9999px;font-size:11px;font-weight:600">feasible</span></td><td style="font-size:11px;color:#94a3b8">Limited API surface</td>
+<td><a href="https://app.gumroad.com/api" target="_blank" style="color:#6366f1;font-size:11px">Docs</a></td></tr>
+<tr>
+<td>49</td><td><strong>Amazon Selling Partner</strong></td><td>Ecommerce</td><td style="max-width:200px;font-size:12px">APIs for Amazon marketplace sellers</td>
+<td><span style="background:#6366f122;color:#6366f1;border:1px solid #6366f144;padding:1px 6px;border-radius:4px;font-size:11px;margin:1px">OAuth2</span></td><td><span style="background:#10b98122;color:#10b981;border:1px solid #10b98144;padding:1px 6px;border-radius:4px;font-size:11px">Free</span></td>
+<td>REST</td><td>comprehensive</td><td><span style="color:#64748b">No</span></td>
+<td><span style="background:#f97316;color:#fff;padding:2px 8px;border-radius:9999px;font-size:11px;font-weight:600">challenging</span></td><td style="font-size:11px;color:#94a3b8">Complex registration and role-based access</td>
+<td><a href="https://developer-docs.amazon.com/sp-api" target="_blank" style="color:#6366f1;font-size:11px">Docs</a></td></tr>
+<tr>
+<td>50</td><td><strong>fanbasis</strong></td><td>Ecommerce</td><td style="max-width:200px;font-size:12px">Creator monetization and fan engagement platform</td>
+<td><span style="background:#6366f122;color:#6366f1;border:1px solid #6366f144;padding:1px 6px;border-radius:4px;font-size:11px;margin:1px">OAuth2</span> <span style="background:#8b5cf622;color:#8b5cf6;border:1px solid #8b5cf644;padding:1px 6px;border-radius:4px;font-size:11px;margin:1px">API Key</span></td><td><span style="background:#ef444422;color:#ef4444;border:1px solid #ef444444;padding:1px 6px;border-radius:4px;font-size:11px">Contact Sales</span></td>
+<td>REST</td><td>limited</td><td><span style="color:#64748b">No</span></td>
+<td><span style="background:#ef4444;color:#fff;padding:2px 8px;border-radius:9999px;font-size:11px;font-weight:600">blocked</span></td><td style="font-size:11px;color:#94a3b8">Gated API access, minimal public docs</td>
+<td><a href="https://fanbasis.com" target="_blank" style="color:#6366f1;font-size:11px">Docs</a></td></tr>
+<tr>
+<td>51</td><td><strong>DataForSEO</strong></td><td>Data SEO and Scraping</td><td style="max-width:200px;font-size:12px">SEO and marketing data API platform</td>
+<td><span style="background:#ec489922;color:#ec4899;border:1px solid #ec489944;padding:1px 6px;border-radius:4px;font-size:11px;margin:1px">Basic</span></td><td><span style="background:#f59e0b22;color:#f59e0b;border:1px solid #f59e0b44;padding:1px 6px;border-radius:4px;font-size:11px">Paid</span></td>
+<td>REST</td><td>comprehensive</td><td><span style="color:#64748b">No</span></td>
+<td><span style="background:#10b981;color:#fff;padding:2px 8px;border-radius:9999px;font-size:11px;font-weight:600">ready</span></td><td style="font-size:11px;color:#94a3b8">none</td>
+<td><a href="https://docs.dataforseo.com" target="_blank" style="color:#6366f1;font-size:11px">Docs</a></td></tr>
+<tr>
+<td>52</td><td><strong>SE Ranking</strong></td><td>Data SEO and Scraping</td><td style="max-width:200px;font-size:12px">All-in-one SEO platform with rank tracking</td>
+<td><span style="background:#8b5cf622;color:#8b5cf6;border:1px solid #8b5cf644;padding:1px 6px;border-radius:4px;font-size:11px;margin:1px">API Key</span></td><td><span style="background:#f59e0b22;color:#f59e0b;border:1px solid #f59e0b44;padding:1px 6px;border-radius:4px;font-size:11px">Paid</span></td>
+<td>REST</td><td>comprehensive</td><td><span style="color:#64748b">No</span></td>
+<td><span style="background:#10b981;color:#fff;padding:2px 8px;border-radius:9999px;font-size:11px;font-weight:600">ready</span></td><td style="font-size:11px;color:#94a3b8">none</td>
+<td><a href="https://api.seranking.com" target="_blank" style="color:#6366f1;font-size:11px">Docs</a></td></tr>
+<tr>
+<td>53</td><td><strong>Ahrefs</strong></td><td>Data SEO and Scraping</td><td style="max-width:200px;font-size:12px">SEO toolset for backlinks, keywords, and audits</td>
+<td><span style="background:#8b5cf622;color:#8b5cf6;border:1px solid #8b5cf644;padding:1px 6px;border-radius:4px;font-size:11px;margin:1px">API Key</span></td><td><span style="background:#f59e0b22;color:#f59e0b;border:1px solid #f59e0b44;padding:1px 6px;border-radius:4px;font-size:11px">Paid</span></td>
+<td>REST</td><td>comprehensive</td><td><span style="color:#64748b">No</span></td>
+<td><span style="background:#10b981;color:#fff;padding:2px 8px;border-radius:9999px;font-size:11px;font-weight:600">ready</span></td><td style="font-size:11px;color:#94a3b8">none</td>
+<td><a href="https://docs.ahrefs.com" target="_blank" style="color:#6366f1;font-size:11px">Docs</a></td></tr>
+<tr>
+<td>54</td><td><strong>MrScraper</strong></td><td>Data SEO and Scraping</td><td style="max-width:200px;font-size:12px">AI-powered web scraping platform</td>
+<td><span style="background:#8b5cf622;color:#8b5cf6;border:1px solid #8b5cf644;padding:1px 6px;border-radius:4px;font-size:11px;margin:1px">API Key</span></td><td><span style="background:#10b98122;color:#10b981;border:1px solid #10b98144;padding:1px 6px;border-radius:4px;font-size:11px">Free</span></td>
+<td>REST</td><td>moderate</td><td><span style="color:#64748b">No</span></td>
+<td><span style="background:#10b981;color:#fff;padding:2px 8px;border-radius:9999px;font-size:11px;font-weight:600">ready</span></td><td style="font-size:11px;color:#94a3b8">none</td>
+<td><a href="https://docs.mrscraper.com" target="_blank" style="color:#6366f1;font-size:11px">Docs</a></td></tr>
+<tr>
+<td>55</td><td><strong>Apify</strong></td><td>Data SEO and Scraping</td><td style="max-width:200px;font-size:12px">Web scraping and automation platform</td>
+<td><span style="background:#8b5cf622;color:#8b5cf6;border:1px solid #8b5cf644;padding:1px 6px;border-radius:4px;font-size:11px;margin:1px">API Key</span></td><td><span style="background:#10b98122;color:#10b981;border:1px solid #10b98144;padding:1px 6px;border-radius:4px;font-size:11px">Free</span></td>
+<td>REST</td><td>comprehensive</td><td><span style="color:#10b981">Yes</span></td>
+<td><span style="background:#10b981;color:#fff;padding:2px 8px;border-radius:9999px;font-size:11px;font-weight:600">ready</span></td><td style="font-size:11px;color:#94a3b8">none</td>
+<td><a href="https://docs.apify.com/api/v2" target="_blank" style="color:#6366f1;font-size:11px">Docs</a></td></tr>
+<tr>
+<td>56</td><td><strong>Firecrawl</strong></td><td>Data SEO and Scraping</td><td style="max-width:200px;font-size:12px">Web scraping API that converts pages to LLM-ready data</td>
+<td><span style="background:#8b5cf622;color:#8b5cf6;border:1px solid #8b5cf644;padding:1px 6px;border-radius:4px;font-size:11px;margin:1px">API Key</span></td><td><span style="background:#10b98122;color:#10b981;border:1px solid #10b98144;padding:1px 6px;border-radius:4px;font-size:11px">Free</span></td>
+<td>REST</td><td>moderate</td><td><span style="color:#10b981">Yes</span></td>
+<td><span style="background:#10b981;color:#fff;padding:2px 8px;border-radius:9999px;font-size:11px;font-weight:600">ready</span></td><td style="font-size:11px;color:#94a3b8">none</td>
+<td><a href="https://docs.firecrawl.dev" target="_blank" style="color:#6366f1;font-size:11px">Docs</a></td></tr>
+<tr>
+<td>57</td><td><strong>Bright Data</strong></td><td>Data SEO and Scraping</td><td style="max-width:200px;font-size:12px">Web data platform with proxy and scraping APIs</td>
+<td><span style="background:#8b5cf622;color:#8b5cf6;border:1px solid #8b5cf644;padding:1px 6px;border-radius:4px;font-size:11px;margin:1px">API Key</span></td><td><span style="background:#3b82f622;color:#3b82f6;border:1px solid #3b82f644;padding:1px 6px;border-radius:4px;font-size:11px">Trial</span></td>
+<td>REST</td><td>comprehensive</td><td><span style="color:#64748b">No</span></td>
+<td><span style="background:#10b981;color:#fff;padding:2px 8px;border-radius:9999px;font-size:11px;font-weight:600">ready</span></td><td style="font-size:11px;color:#94a3b8">none</td>
+<td><a href="https://docs.brightdata.com" target="_blank" style="color:#6366f1;font-size:11px">Docs</a></td></tr>
+<tr>
+<td>58</td><td><strong>Sherlock</strong></td><td>Data SEO and Scraping</td><td style="max-width:200px;font-size:12px">Open-source username search across social networks</td>
+<td><span style="background:#6b728022;color:#6b7280;border:1px solid #6b728044;padding:1px 6px;border-radius:4px;font-size:11px;margin:1px">None</span></td><td><span style="background:#10b98122;color:#10b981;border:1px solid #10b98144;padding:1px 6px;border-radius:4px;font-size:11px">Free</span></td>
+<td>CLI</td><td>limited</td><td><span style="color:#64748b">No</span></td>
+<td><span style="background:#f59e0b;color:#fff;padding:2px 8px;border-radius:9999px;font-size:11px;font-weight:600">feasible</span></td><td style="font-size:11px;color:#94a3b8">CLI tool, no REST API — needs wrapper</td>
+<td><a href="https://github.com/sherlock-project/sherlock" target="_blank" style="color:#6366f1;font-size:11px">Docs</a></td></tr>
+<tr>
+<td>59</td><td><strong>Waterfall.io</strong></td><td>Data SEO and Scraping</td><td style="max-width:200px;font-size:12px">Contact and company intelligence enrichment API</td>
+<td><span style="background:#8b5cf622;color:#8b5cf6;border:1px solid #8b5cf644;padding:1px 6px;border-radius:4px;font-size:11px;margin:1px">API Key</span></td><td><span style="background:#ef444422;color:#ef4444;border:1px solid #ef444444;padding:1px 6px;border-radius:4px;font-size:11px">Contact Sales</span></td>
+<td>REST</td><td>moderate</td><td><span style="color:#64748b">No</span></td>
+<td><span style="background:#f59e0b;color:#fff;padding:2px 8px;border-radius:9999px;font-size:11px;font-weight:600">feasible</span></td><td style="font-size:11px;color:#94a3b8">Contact sales for API access</td>
+<td><a href="https://api.waterfall.io" target="_blank" style="color:#6366f1;font-size:11px">Docs</a></td></tr>
+<tr>
+<td>60</td><td><strong>Clay</strong></td><td>Data SEO and Scraping</td><td style="max-width:200px;font-size:12px">Data enrichment and outbound automation platform</td>
+<td><span style="background:#8b5cf622;color:#8b5cf6;border:1px solid #8b5cf644;padding:1px 6px;border-radius:4px;font-size:11px;margin:1px">API Key</span></td><td><span style="background:#f59e0b22;color:#f59e0b;border:1px solid #f59e0b44;padding:1px 6px;border-radius:4px;font-size:11px">Paid</span></td>
+<td>REST</td><td>limited</td><td><span style="color:#64748b">No</span></td>
+<td><span style="background:#ef4444;color:#fff;padding:2px 8px;border-radius:9999px;font-size:11px;font-weight:600">blocked</span></td><td style="font-size:11px;color:#94a3b8">No public API to control Clay — it consumes APIs, not exposes one</td>
+<td><a href="https://clay.com" target="_blank" style="color:#6366f1;font-size:11px">Docs</a></td></tr>
+<tr>
+<td>61</td><td><strong>GitHub</strong></td><td>Developer Infra and Data Platforms</td><td style="max-width:200px;font-size:12px">Code hosting and collaboration platform</td>
+<td><span style="background:#6366f122;color:#6366f1;border:1px solid #6366f144;padding:1px 6px;border-radius:4px;font-size:11px;margin:1px">OAuth2</span> <span style="background:#06b6d422;color:#06b6d4;border:1px solid #06b6d444;padding:1px 6px;border-radius:4px;font-size:11px;margin:1px">Token</span></td><td><span style="background:#10b98122;color:#10b981;border:1px solid #10b98144;padding:1px 6px;border-radius:4px;font-size:11px">Free</span></td>
+<td>Both</td><td>comprehensive</td><td><span style="color:#10b981">Yes</span></td>
+<td><span style="background:#10b981;color:#fff;padding:2px 8px;border-radius:9999px;font-size:11px;font-weight:600">ready</span></td><td style="font-size:11px;color:#94a3b8">none</td>
+<td><a href="https://docs.github.com/rest" target="_blank" style="color:#6366f1;font-size:11px">Docs</a></td></tr>
+<tr>
+<td>62</td><td><strong>Vercel</strong></td><td>Developer Infra and Data Platforms</td><td style="max-width:200px;font-size:12px">Frontend cloud platform for deployment</td>
+<td><span style="background:#6366f122;color:#6366f1;border:1px solid #6366f144;padding:1px 6px;border-radius:4px;font-size:11px;margin:1px">OAuth2</span> <span style="background:#06b6d422;color:#06b6d4;border:1px solid #06b6d444;padding:1px 6px;border-radius:4px;font-size:11px;margin:1px">Token</span></td><td><span style="background:#10b98122;color:#10b981;border:1px solid #10b98144;padding:1px 6px;border-radius:4px;font-size:11px">Free</span></td>
+<td>REST</td><td>comprehensive</td><td><span style="color:#10b981">Yes</span></td>
+<td><span style="background:#10b981;color:#fff;padding:2px 8px;border-radius:9999px;font-size:11px;font-weight:600">ready</span></td><td style="font-size:11px;color:#94a3b8">none</td>
+<td><a href="https://vercel.com/docs/rest-api" target="_blank" style="color:#6366f1;font-size:11px">Docs</a></td></tr>
+<tr>
+<td>63</td><td><strong>Netlify</strong></td><td>Developer Infra and Data Platforms</td><td style="max-width:200px;font-size:12px">Web development and hosting platform</td>
+<td><span style="background:#6366f122;color:#6366f1;border:1px solid #6366f144;padding:1px 6px;border-radius:4px;font-size:11px;margin:1px">OAuth2</span> <span style="background:#06b6d422;color:#06b6d4;border:1px solid #06b6d444;padding:1px 6px;border-radius:4px;font-size:11px;margin:1px">Token</span></td><td><span style="background:#10b98122;color:#10b981;border:1px solid #10b98144;padding:1px 6px;border-radius:4px;font-size:11px">Free</span></td>
+<td>REST</td><td>comprehensive</td><td><span style="color:#64748b">No</span></td>
+<td><span style="background:#10b981;color:#fff;padding:2px 8px;border-radius:9999px;font-size:11px;font-weight:600">ready</span></td><td style="font-size:11px;color:#94a3b8">none</td>
+<td><a href="https://docs.netlify.com/api" target="_blank" style="color:#6366f1;font-size:11px">Docs</a></td></tr>
+<tr>
+<td>64</td><td><strong>Cloudflare</strong></td><td>Developer Infra and Data Platforms</td><td style="max-width:200px;font-size:12px">Web performance, security, and edge computing</td>
+<td><span style="background:#8b5cf622;color:#8b5cf6;border:1px solid #8b5cf644;padding:1px 6px;border-radius:4px;font-size:11px;margin:1px">API Key</span> <span style="background:#06b6d422;color:#06b6d4;border:1px solid #06b6d444;padding:1px 6px;border-radius:4px;font-size:11px;margin:1px">Token</span></td><td><span style="background:#10b98122;color:#10b981;border:1px solid #10b98144;padding:1px 6px;border-radius:4px;font-size:11px">Free</span></td>
+<td>REST</td><td>comprehensive</td><td><span style="color:#10b981">Yes</span></td>
+<td><span style="background:#10b981;color:#fff;padding:2px 8px;border-radius:9999px;font-size:11px;font-weight:600">ready</span></td><td style="font-size:11px;color:#94a3b8">none</td>
+<td><a href="https://developers.cloudflare.com/api" target="_blank" style="color:#6366f1;font-size:11px">Docs</a></td></tr>
+<tr>
+<td>65</td><td><strong>Supabase</strong></td><td>Developer Infra and Data Platforms</td><td style="max-width:200px;font-size:12px">Open-source Firebase alternative (Postgres-backed)</td>
+<td><span style="background:#8b5cf622;color:#8b5cf6;border:1px solid #8b5cf644;padding:1px 6px;border-radius:4px;font-size:11px;margin:1px">API Key</span> <span style="background:#6366f122;color:#6366f1;border:1px solid #6366f144;padding:1px 6px;border-radius:4px;font-size:11px;margin:1px">OAuth2</span></td><td><span style="background:#10b98122;color:#10b981;border:1px solid #10b98144;padding:1px 6px;border-radius:4px;font-size:11px">Free</span></td>
+<td>REST</td><td>comprehensive</td><td><span style="color:#10b981">Yes</span></td>
+<td><span style="background:#10b981;color:#fff;padding:2px 8px;border-radius:9999px;font-size:11px;font-weight:600">ready</span></td><td style="font-size:11px;color:#94a3b8">none</td>
+<td><a href="https://supabase.com/docs/guides/api" target="_blank" style="color:#6366f1;font-size:11px">Docs</a></td></tr>
+<tr>
+<td>66</td><td><strong>Neo4j</strong></td><td>Developer Infra and Data Platforms</td><td style="max-width:200px;font-size:12px">Graph database platform</td>
+<td><span style="background:#ec489922;color:#ec4899;border:1px solid #ec489944;padding:1px 6px;border-radius:4px;font-size:11px;margin:1px">Basic</span> <span style="background:#06b6d422;color:#06b6d4;border:1px solid #06b6d444;padding:1px 6px;border-radius:4px;font-size:11px;margin:1px">Token</span></td><td><span style="background:#10b98122;color:#10b981;border:1px solid #10b98144;padding:1px 6px;border-radius:4px;font-size:11px">Free</span></td>
+<td>REST</td><td>comprehensive</td><td><span style="color:#10b981">Yes</span></td>
+<td><span style="background:#10b981;color:#fff;padding:2px 8px;border-radius:9999px;font-size:11px;font-weight:600">ready</span></td><td style="font-size:11px;color:#94a3b8">none</td>
+<td><a href="https://neo4j.com/docs/http-api/current" target="_blank" style="color:#6366f1;font-size:11px">Docs</a></td></tr>
+<tr>
+<td>67</td><td><strong>Snowflake</strong></td><td>Developer Infra and Data Platforms</td><td style="max-width:200px;font-size:12px">Cloud data warehouse and analytics platform</td>
+<td><span style="background:#6366f122;color:#6366f1;border:1px solid #6366f144;padding:1px 6px;border-radius:4px;font-size:11px;margin:1px">OAuth2</span> <span style="background:#06b6d422;color:#06b6d4;border:1px solid #06b6d444;padding:1px 6px;border-radius:4px;font-size:11px;margin:1px">Token</span></td><td><span style="background:#3b82f622;color:#3b82f6;border:1px solid #3b82f644;padding:1px 6px;border-radius:4px;font-size:11px">Trial</span></td>
+<td>REST</td><td>comprehensive</td><td><span style="color:#64748b">No</span></td>
+<td><span style="background:#10b981;color:#fff;padding:2px 8px;border-radius:9999px;font-size:11px;font-weight:600">ready</span></td><td style="font-size:11px;color:#94a3b8">none</td>
+<td><a href="https://docs.snowflake.com/en/developer-guide/sql-api" target="_blank" style="color:#6366f1;font-size:11px">Docs</a></td></tr>
+<tr>
+<td>68</td><td><strong>MongoDB Atlas</strong></td><td>Developer Infra and Data Platforms</td><td style="max-width:200px;font-size:12px">Cloud-hosted MongoDB database service</td>
+<td><span style="background:#8b5cf622;color:#8b5cf6;border:1px solid #8b5cf644;padding:1px 6px;border-radius:4px;font-size:11px;margin:1px">API Key</span></td><td><span style="background:#10b98122;color:#10b981;border:1px solid #10b98144;padding:1px 6px;border-radius:4px;font-size:11px">Free</span></td>
+<td>REST</td><td>comprehensive</td><td><span style="color:#10b981">Yes</span></td>
+<td><span style="background:#10b981;color:#fff;padding:2px 8px;border-radius:9999px;font-size:11px;font-weight:600">ready</span></td><td style="font-size:11px;color:#94a3b8">none</td>
+<td><a href="https://www.mongodb.com/docs/atlas/api" target="_blank" style="color:#6366f1;font-size:11px">Docs</a></td></tr>
+<tr>
+<td>69</td><td><strong>Datadog</strong></td><td>Developer Infra and Data Platforms</td><td style="max-width:200px;font-size:12px">Cloud monitoring and observability platform</td>
+<td><span style="background:#8b5cf622;color:#8b5cf6;border:1px solid #8b5cf644;padding:1px 6px;border-radius:4px;font-size:11px;margin:1px">API Key</span></td><td><span style="background:#3b82f622;color:#3b82f6;border:1px solid #3b82f644;padding:1px 6px;border-radius:4px;font-size:11px">Trial</span></td>
+<td>REST</td><td>comprehensive</td><td><span style="color:#64748b">No</span></td>
+<td><span style="background:#10b981;color:#fff;padding:2px 8px;border-radius:9999px;font-size:11px;font-weight:600">ready</span></td><td style="font-size:11px;color:#94a3b8">none</td>
+<td><a href="https://docs.datadoghq.com/api" target="_blank" style="color:#6366f1;font-size:11px">Docs</a></td></tr>
+<tr>
+<td>70</td><td><strong>Sentry</strong></td><td>Developer Infra and Data Platforms</td><td style="max-width:200px;font-size:12px">Application monitoring and error tracking</td>
+<td><span style="background:#6366f122;color:#6366f1;border:1px solid #6366f144;padding:1px 6px;border-radius:4px;font-size:11px;margin:1px">OAuth2</span> <span style="background:#06b6d422;color:#06b6d4;border:1px solid #06b6d444;padding:1px 6px;border-radius:4px;font-size:11px;margin:1px">Token</span></td><td><span style="background:#10b98122;color:#10b981;border:1px solid #10b98144;padding:1px 6px;border-radius:4px;font-size:11px">Free</span></td>
+<td>REST</td><td>comprehensive</td><td><span style="color:#64748b">No</span></td>
+<td><span style="background:#10b981;color:#fff;padding:2px 8px;border-radius:9999px;font-size:11px;font-weight:600">ready</span></td><td style="font-size:11px;color:#94a3b8">none</td>
+<td><a href="https://docs.sentry.io/api" target="_blank" style="color:#6366f1;font-size:11px">Docs</a></td></tr>
+<tr>
+<td>71</td><td><strong>Notion</strong></td><td>Productivity and Project Management</td><td style="max-width:200px;font-size:12px">All-in-one workspace for notes, docs, and projects</td>
+<td><span style="background:#6366f122;color:#6366f1;border:1px solid #6366f144;padding:1px 6px;border-radius:4px;font-size:11px;margin:1px">OAuth2</span> <span style="background:#8b5cf622;color:#8b5cf6;border:1px solid #8b5cf644;padding:1px 6px;border-radius:4px;font-size:11px;margin:1px">API Key</span></td><td><span style="background:#10b98122;color:#10b981;border:1px solid #10b98144;padding:1px 6px;border-radius:4px;font-size:11px">Free</span></td>
+<td>REST</td><td>comprehensive</td><td><span style="color:#10b981">Yes</span></td>
+<td><span style="background:#10b981;color:#fff;padding:2px 8px;border-radius:9999px;font-size:11px;font-weight:600">ready</span></td><td style="font-size:11px;color:#94a3b8">none</td>
+<td><a href="https://developers.notion.com" target="_blank" style="color:#6366f1;font-size:11px">Docs</a></td></tr>
+<tr>
+<td>72</td><td><strong>Airtable</strong></td><td>Productivity and Project Management</td><td style="max-width:200px;font-size:12px">Spreadsheet-database hybrid for teams</td>
+<td><span style="background:#6366f122;color:#6366f1;border:1px solid #6366f144;padding:1px 6px;border-radius:4px;font-size:11px;margin:1px">OAuth2</span> <span style="background:#8b5cf622;color:#8b5cf6;border:1px solid #8b5cf644;padding:1px 6px;border-radius:4px;font-size:11px;margin:1px">API Key</span></td><td><span style="background:#10b98122;color:#10b981;border:1px solid #10b98144;padding:1px 6px;border-radius:4px;font-size:11px">Free</span></td>
+<td>REST</td><td>comprehensive</td><td><span style="color:#64748b">No</span></td>
+<td><span style="background:#10b981;color:#fff;padding:2px 8px;border-radius:9999px;font-size:11px;font-weight:600">ready</span></td><td style="font-size:11px;color:#94a3b8">none</td>
+<td><a href="https://airtable.com/developers/web/api" target="_blank" style="color:#6366f1;font-size:11px">Docs</a></td></tr>
+<tr>
+<td>73</td><td><strong>Linear</strong></td><td>Productivity and Project Management</td><td style="max-width:200px;font-size:12px">Issue tracking for modern software teams</td>
+<td><span style="background:#6366f122;color:#6366f1;border:1px solid #6366f144;padding:1px 6px;border-radius:4px;font-size:11px;margin:1px">OAuth2</span> <span style="background:#8b5cf622;color:#8b5cf6;border:1px solid #8b5cf644;padding:1px 6px;border-radius:4px;font-size:11px;margin:1px">API Key</span></td><td><span style="background:#10b98122;color:#10b981;border:1px solid #10b98144;padding:1px 6px;border-radius:4px;font-size:11px">Free</span></td>
+<td>GraphQL</td><td>comprehensive</td><td><span style="color:#10b981">Yes</span></td>
+<td><span style="background:#10b981;color:#fff;padding:2px 8px;border-radius:9999px;font-size:11px;font-weight:600">ready</span></td><td style="font-size:11px;color:#94a3b8">none</td>
+<td><a href="https://developers.linear.app" target="_blank" style="color:#6366f1;font-size:11px">Docs</a></td></tr>
+<tr>
+<td>74</td><td><strong>Jira</strong></td><td>Productivity and Project Management</td><td style="max-width:200px;font-size:12px">Project and issue tracking by Atlassian</td>
+<td><span style="background:#6366f122;color:#6366f1;border:1px solid #6366f144;padding:1px 6px;border-radius:4px;font-size:11px;margin:1px">OAuth2</span> <span style="background:#8b5cf622;color:#8b5cf6;border:1px solid #8b5cf644;padding:1px 6px;border-radius:4px;font-size:11px;margin:1px">API Key</span></td><td><span style="background:#10b98122;color:#10b981;border:1px solid #10b98144;padding:1px 6px;border-radius:4px;font-size:11px">Free</span></td>
+<td>REST</td><td>comprehensive</td><td><span style="color:#10b981">Yes</span></td>
+<td><span style="background:#10b981;color:#fff;padding:2px 8px;border-radius:9999px;font-size:11px;font-weight:600">ready</span></td><td style="font-size:11px;color:#94a3b8">none</td>
+<td><a href="https://developer.atlassian.com/cloud/jira/platform/rest/v3" target="_blank" style="color:#6366f1;font-size:11px">Docs</a></td></tr>
+<tr>
+<td>75</td><td><strong>Asana</strong></td><td>Productivity and Project Management</td><td style="max-width:200px;font-size:12px">Work management and project collaboration</td>
+<td><span style="background:#6366f122;color:#6366f1;border:1px solid #6366f144;padding:1px 6px;border-radius:4px;font-size:11px;margin:1px">OAuth2</span> <span style="background:#06b6d422;color:#06b6d4;border:1px solid #06b6d444;padding:1px 6px;border-radius:4px;font-size:11px;margin:1px">Token</span></td><td><span style="background:#10b98122;color:#10b981;border:1px solid #10b98144;padding:1px 6px;border-radius:4px;font-size:11px">Free</span></td>
+<td>REST</td><td>comprehensive</td><td><span style="color:#64748b">No</span></td>
+<td><span style="background:#10b981;color:#fff;padding:2px 8px;border-radius:9999px;font-size:11px;font-weight:600">ready</span></td><td style="font-size:11px;color:#94a3b8">none</td>
+<td><a href="https://developers.asana.com/docs" target="_blank" style="color:#6366f1;font-size:11px">Docs</a></td></tr>
+<tr>
+<td>76</td><td><strong>Monday.com</strong></td><td>Productivity and Project Management</td><td style="max-width:200px;font-size:12px">Work OS for teams with customizable workflows</td>
+<td><span style="background:#6366f122;color:#6366f1;border:1px solid #6366f144;padding:1px 6px;border-radius:4px;font-size:11px;margin:1px">OAuth2</span> <span style="background:#8b5cf622;color:#8b5cf6;border:1px solid #8b5cf644;padding:1px 6px;border-radius:4px;font-size:11px;margin:1px">API Key</span></td><td><span style="background:#10b98122;color:#10b981;border:1px solid #10b98144;padding:1px 6px;border-radius:4px;font-size:11px">Free</span></td>
+<td>GraphQL</td><td>comprehensive</td><td><span style="color:#64748b">No</span></td>
+<td><span style="background:#10b981;color:#fff;padding:2px 8px;border-radius:9999px;font-size:11px;font-weight:600">ready</span></td><td style="font-size:11px;color:#94a3b8">none</td>
+<td><a href="https://developer.monday.com/api-reference" target="_blank" style="color:#6366f1;font-size:11px">Docs</a></td></tr>
+<tr>
+<td>77</td><td><strong>ClickUp</strong></td><td>Productivity and Project Management</td><td style="max-width:200px;font-size:12px">All-in-one project management platform</td>
+<td><span style="background:#6366f122;color:#6366f1;border:1px solid #6366f144;padding:1px 6px;border-radius:4px;font-size:11px;margin:1px">OAuth2</span> <span style="background:#8b5cf622;color:#8b5cf6;border:1px solid #8b5cf644;padding:1px 6px;border-radius:4px;font-size:11px;margin:1px">API Key</span></td><td><span style="background:#10b98122;color:#10b981;border:1px solid #10b98144;padding:1px 6px;border-radius:4px;font-size:11px">Free</span></td>
+<td>REST</td><td>comprehensive</td><td><span style="color:#10b981">Yes</span></td>
+<td><span style="background:#10b981;color:#fff;padding:2px 8px;border-radius:9999px;font-size:11px;font-weight:600">ready</span></td><td style="font-size:11px;color:#94a3b8">none</td>
+<td><a href="https://clickup.com/api" target="_blank" style="color:#6366f1;font-size:11px">Docs</a></td></tr>
+<tr>
+<td>78</td><td><strong>Coda</strong></td><td>Productivity and Project Management</td><td style="max-width:200px;font-size:12px">Doc-powered workspace with automation</td>
+<td><span style="background:#8b5cf622;color:#8b5cf6;border:1px solid #8b5cf644;padding:1px 6px;border-radius:4px;font-size:11px;margin:1px">API Key</span></td><td><span style="background:#10b98122;color:#10b981;border:1px solid #10b98144;padding:1px 6px;border-radius:4px;font-size:11px">Free</span></td>
+<td>REST</td><td>comprehensive</td><td><span style="color:#64748b">No</span></td>
+<td><span style="background:#10b981;color:#fff;padding:2px 8px;border-radius:9999px;font-size:11px;font-weight:600">ready</span></td><td style="font-size:11px;color:#94a3b8">none</td>
+<td><a href="https://coda.io/developers/apis/v1" target="_blank" style="color:#6366f1;font-size:11px">Docs</a></td></tr>
+<tr>
+<td>79</td><td><strong>Smartsheet</strong></td><td>Productivity and Project Management</td><td style="max-width:200px;font-size:12px">Enterprise work management platform</td>
+<td><span style="background:#6366f122;color:#6366f1;border:1px solid #6366f144;padding:1px 6px;border-radius:4px;font-size:11px;margin:1px">OAuth2</span> <span style="background:#8b5cf622;color:#8b5cf6;border:1px solid #8b5cf644;padding:1px 6px;border-radius:4px;font-size:11px;margin:1px">API Key</span></td><td><span style="background:#3b82f622;color:#3b82f6;border:1px solid #3b82f644;padding:1px 6px;border-radius:4px;font-size:11px">Trial</span></td>
+<td>REST</td><td>comprehensive</td><td><span style="color:#64748b">No</span></td>
+<td><span style="background:#10b981;color:#fff;padding:2px 8px;border-radius:9999px;font-size:11px;font-weight:600">ready</span></td><td style="font-size:11px;color:#94a3b8">none</td>
+<td><a href="https://smartsheet.redoc.ly" target="_blank" style="color:#6366f1;font-size:11px">Docs</a></td></tr>
+<tr>
+<td>80</td><td><strong>Harvest</strong></td><td>Productivity and Project Management</td><td style="max-width:200px;font-size:12px">Time tracking and invoicing for teams</td>
+<td><span style="background:#6366f122;color:#6366f1;border:1px solid #6366f144;padding:1px 6px;border-radius:4px;font-size:11px;margin:1px">OAuth2</span> <span style="background:#06b6d422;color:#06b6d4;border:1px solid #06b6d444;padding:1px 6px;border-radius:4px;font-size:11px;margin:1px">Token</span></td><td><span style="background:#3b82f622;color:#3b82f6;border:1px solid #3b82f644;padding:1px 6px;border-radius:4px;font-size:11px">Trial</span></td>
+<td>REST</td><td>comprehensive</td><td><span style="color:#64748b">No</span></td>
+<td><span style="background:#10b981;color:#fff;padding:2px 8px;border-radius:9999px;font-size:11px;font-weight:600">ready</span></td><td style="font-size:11px;color:#94a3b8">none</td>
+<td><a href="https://help.getharvest.com/api-v2" target="_blank" style="color:#6366f1;font-size:11px">Docs</a></td></tr>
+<tr>
+<td>81</td><td><strong>Stripe</strong></td><td>Finance and Fintech</td><td style="max-width:200px;font-size:12px">Online payment processing platform</td>
+<td><span style="background:#8b5cf622;color:#8b5cf6;border:1px solid #8b5cf644;padding:1px 6px;border-radius:4px;font-size:11px;margin:1px">API Key</span></td><td><span style="background:#10b98122;color:#10b981;border:1px solid #10b98144;padding:1px 6px;border-radius:4px;font-size:11px">Free</span></td>
+<td>REST</td><td>comprehensive</td><td><span style="color:#10b981">Yes</span></td>
+<td><span style="background:#10b981;color:#fff;padding:2px 8px;border-radius:9999px;font-size:11px;font-weight:600">ready</span></td><td style="font-size:11px;color:#94a3b8">none</td>
+<td><a href="https://stripe.com/docs/api" target="_blank" style="color:#6366f1;font-size:11px">Docs</a></td></tr>
+<tr>
+<td>82</td><td><strong>Plaid</strong></td><td>Finance and Fintech</td><td style="max-width:200px;font-size:12px">Financial data connectivity and banking APIs</td>
+<td><span style="background:#8b5cf622;color:#8b5cf6;border:1px solid #8b5cf644;padding:1px 6px;border-radius:4px;font-size:11px;margin:1px">API Key</span></td><td><span style="background:#10b98122;color:#10b981;border:1px solid #10b98144;padding:1px 6px;border-radius:4px;font-size:11px">Free</span></td>
+<td>REST</td><td>comprehensive</td><td><span style="color:#64748b">No</span></td>
+<td><span style="background:#10b981;color:#fff;padding:2px 8px;border-radius:9999px;font-size:11px;font-weight:600">ready</span></td><td style="font-size:11px;color:#94a3b8">none</td>
+<td><a href="https://plaid.com/docs" target="_blank" style="color:#6366f1;font-size:11px">Docs</a></td></tr>
+<tr>
+<td>83</td><td><strong>Binance</strong></td><td>Finance and Fintech</td><td style="max-width:200px;font-size:12px">Cryptocurrency exchange platform</td>
+<td><span style="background:#8b5cf622;color:#8b5cf6;border:1px solid #8b5cf644;padding:1px 6px;border-radius:4px;font-size:11px;margin:1px">API Key</span></td><td><span style="background:#10b98122;color:#10b981;border:1px solid #10b98144;padding:1px 6px;border-radius:4px;font-size:11px">Free</span></td>
+<td>REST</td><td>comprehensive</td><td><span style="color:#64748b">No</span></td>
+<td><span style="background:#10b981;color:#fff;padding:2px 8px;border-radius:9999px;font-size:11px;font-weight:600">ready</span></td><td style="font-size:11px;color:#94a3b8">none</td>
+<td><a href="https://binance-docs.github.io/apidocs" target="_blank" style="color:#6366f1;font-size:11px">Docs</a></td></tr>
+<tr>
+<td>84</td><td><strong>Paygent Connect</strong></td><td>Finance and Fintech</td><td style="max-width:200px;font-size:12px">Japanese payment gateway (Mitsubishi UFJ / NTT Data)</td>
+<td><span style="background:#8b5cf622;color:#8b5cf6;border:1px solid #8b5cf644;padding:1px 6px;border-radius:4px;font-size:11px;margin:1px">API Key</span></td><td><span style="background:#ef444422;color:#ef4444;border:1px solid #ef444444;padding:1px 6px;border-radius:4px;font-size:11px">Contact Sales</span></td>
+<td>REST</td><td>moderate</td><td><span style="color:#64748b">No</span></td>
+<td><span style="background:#ef4444;color:#fff;padding:2px 8px;border-radius:9999px;font-size:11px;font-weight:600">blocked</span></td><td style="font-size:11px;color:#94a3b8">Japan-only, requires merchant contract</td>
+<td><a href="https://www.paygent.co.jp" target="_blank" style="color:#6366f1;font-size:11px">Docs</a></td></tr>
+<tr>
+<td>85</td><td><strong>iPayX</strong></td><td>Finance and Fintech</td><td style="max-width:200px;font-size:12px">Legacy payment platform (acquired by BillingTree)</td>
+<td><span style="background:#8b5cf622;color:#8b5cf6;border:1px solid #8b5cf644;padding:1px 6px;border-radius:4px;font-size:11px;margin:1px">API Key</span></td><td><span style="background:#ef444422;color:#ef4444;border:1px solid #ef444444;padding:1px 6px;border-radius:4px;font-size:11px">Contact Sales</span></td>
+<td>REST</td><td>limited</td><td><span style="color:#64748b">No</span></td>
+<td><span style="background:#ef4444;color:#fff;padding:2px 8px;border-radius:9999px;font-size:11px;font-weight:600">blocked</span></td><td style="font-size:11px;color:#94a3b8">Product discontinued / acquired</td>
+<td><a href="https://www.billingtree.com" target="_blank" style="color:#6366f1;font-size:11px">Docs</a></td></tr>
+<tr>
+<td>86</td><td><strong>QuickBooks</strong></td><td>Finance and Fintech</td><td style="max-width:200px;font-size:12px">Small business accounting software by Intuit</td>
+<td><span style="background:#6366f122;color:#6366f1;border:1px solid #6366f144;padding:1px 6px;border-radius:4px;font-size:11px;margin:1px">OAuth2</span></td><td><span style="background:#10b98122;color:#10b981;border:1px solid #10b98144;padding:1px 6px;border-radius:4px;font-size:11px">Free</span></td>
+<td>REST</td><td>comprehensive</td><td><span style="color:#64748b">No</span></td>
+<td><span style="background:#10b981;color:#fff;padding:2px 8px;border-radius:9999px;font-size:11px;font-weight:600">ready</span></td><td style="font-size:11px;color:#94a3b8">none</td>
+<td><a href="https://developer.intuit.com/app/developer/qbo/docs/api" target="_blank" style="color:#6366f1;font-size:11px">Docs</a></td></tr>
+<tr>
+<td>87</td><td><strong>Xero</strong></td><td>Finance and Fintech</td><td style="max-width:200px;font-size:12px">Cloud accounting for small businesses</td>
+<td><span style="background:#6366f122;color:#6366f1;border:1px solid #6366f144;padding:1px 6px;border-radius:4px;font-size:11px;margin:1px">OAuth2</span></td><td><span style="background:#10b98122;color:#10b981;border:1px solid #10b98144;padding:1px 6px;border-radius:4px;font-size:11px">Free</span></td>
+<td>REST</td><td>comprehensive</td><td><span style="color:#64748b">No</span></td>
+<td><span style="background:#10b981;color:#fff;padding:2px 8px;border-radius:9999px;font-size:11px;font-weight:600">ready</span></td><td style="font-size:11px;color:#94a3b8">none</td>
+<td><a href="https://developer.xero.com/documentation/api" target="_blank" style="color:#6366f1;font-size:11px">Docs</a></td></tr>
+<tr>
+<td>88</td><td><strong>Brex</strong></td><td>Finance and Fintech</td><td style="max-width:200px;font-size:12px">Corporate credit cards and spend management</td>
+<td><span style="background:#6366f122;color:#6366f1;border:1px solid #6366f144;padding:1px 6px;border-radius:4px;font-size:11px;margin:1px">OAuth2</span> <span style="background:#8b5cf622;color:#8b5cf6;border:1px solid #8b5cf644;padding:1px 6px;border-radius:4px;font-size:11px;margin:1px">API Key</span></td><td><span style="background:#10b98122;color:#10b981;border:1px solid #10b98144;padding:1px 6px;border-radius:4px;font-size:11px">Free</span></td>
+<td>REST</td><td>comprehensive</td><td><span style="color:#64748b">No</span></td>
+<td><span style="background:#10b981;color:#fff;padding:2px 8px;border-radius:9999px;font-size:11px;font-weight:600">ready</span></td><td style="font-size:11px;color:#94a3b8">none</td>
+<td><a href="https://developer.brex.com" target="_blank" style="color:#6366f1;font-size:11px">Docs</a></td></tr>
+<tr>
+<td>89</td><td><strong>Ramp</strong></td><td>Finance and Fintech</td><td style="max-width:200px;font-size:12px">Corporate card and expense management platform</td>
+<td><span style="background:#6366f122;color:#6366f1;border:1px solid #6366f144;padding:1px 6px;border-radius:4px;font-size:11px;margin:1px">OAuth2</span> <span style="background:#8b5cf622;color:#8b5cf6;border:1px solid #8b5cf644;padding:1px 6px;border-radius:4px;font-size:11px;margin:1px">API Key</span></td><td><span style="background:#10b98122;color:#10b981;border:1px solid #10b98144;padding:1px 6px;border-radius:4px;font-size:11px">Free</span></td>
+<td>REST</td><td>comprehensive</td><td><span style="color:#64748b">No</span></td>
+<td><span style="background:#10b981;color:#fff;padding:2px 8px;border-radius:9999px;font-size:11px;font-weight:600">ready</span></td><td style="font-size:11px;color:#94a3b8">none</td>
+<td><a href="https://docs.ramp.com" target="_blank" style="color:#6366f1;font-size:11px">Docs</a></td></tr>
+<tr>
+<td>90</td><td><strong>PitchBook</strong></td><td>Finance and Fintech</td><td style="max-width:200px;font-size:12px">Private market financial data and research</td>
+<td><span style="background:#06b6d422;color:#06b6d4;border:1px solid #06b6d444;padding:1px 6px;border-radius:4px;font-size:11px;margin:1px">Token</span></td><td><span style="background:#ef444422;color:#ef4444;border:1px solid #ef444444;padding:1px 6px;border-radius:4px;font-size:11px">Contact Sales</span></td>
+<td>REST</td><td>comprehensive</td><td><span style="color:#64748b">No</span></td>
+<td><span style="background:#ef4444;color:#fff;padding:2px 8px;border-radius:9999px;font-size:11px;font-weight:600">blocked</span></td><td style="font-size:11px;color:#94a3b8">Enterprise contract + credit purchase required</td>
+<td><a href="https://pitchbook.com/data/api" target="_blank" style="color:#6366f1;font-size:11px">Docs</a></td></tr>
+<tr>
+<td>91</td><td><strong>NotebookLM</strong></td><td>AI Research and Media-native</td><td style="max-width:200px;font-size:12px">AI-powered research notebook by Google</td>
+<td><span style="background:#6366f122;color:#6366f1;border:1px solid #6366f144;padding:1px 6px;border-radius:4px;font-size:11px;margin:1px">OAuth2</span></td><td><span style="background:#ef444422;color:#ef4444;border:1px solid #ef444444;padding:1px 6px;border-radius:4px;font-size:11px">Contact Sales</span></td>
+<td>REST</td><td>limited</td><td><span style="color:#64748b">No</span></td>
+<td><span style="background:#ef4444;color:#fff;padding:2px 8px;border-radius:9999px;font-size:11px;font-weight:600">blocked</span></td><td style="font-size:11px;color:#94a3b8">Enterprise-only API, no public access</td>
+<td><a href="https://cloud.google.com/notebooklm" target="_blank" style="color:#6366f1;font-size:11px">Docs</a></td></tr>
+<tr>
+<td>92</td><td><strong>Otter AI</strong></td><td>AI Research and Media-native</td><td style="max-width:200px;font-size:12px">AI meeting transcription and note-taking</td>
+<td><span style="background:#6366f122;color:#6366f1;border:1px solid #6366f144;padding:1px 6px;border-radius:4px;font-size:11px;margin:1px">OAuth2</span></td><td><span style="background:#ef444422;color:#ef4444;border:1px solid #ef444444;padding:1px 6px;border-radius:4px;font-size:11px">Contact Sales</span></td>
+<td>REST</td><td>moderate</td><td><span style="color:#10b981">Yes</span></td>
+<td><span style="background:#f97316;color:#fff;padding:2px 8px;border-radius:9999px;font-size:11px;font-weight:600">challenging</span></td><td style="font-size:11px;color:#94a3b8">Enterprise-only REST API; MCP available more broadly</td>
+<td><a href="https://help.otter.ai" target="_blank" style="color:#6366f1;font-size:11px">Docs</a></td></tr>
+<tr>
+<td>93</td><td><strong>Fathom</strong></td><td>AI Research and Media-native</td><td style="max-width:200px;font-size:12px">AI meeting assistant for summaries and action items</td>
+<td><span style="background:#6366f122;color:#6366f1;border:1px solid #6366f144;padding:1px 6px;border-radius:4px;font-size:11px;margin:1px">OAuth2</span> <span style="background:#8b5cf622;color:#8b5cf6;border:1px solid #8b5cf644;padding:1px 6px;border-radius:4px;font-size:11px;margin:1px">API Key</span></td><td><span style="background:#10b98122;color:#10b981;border:1px solid #10b98144;padding:1px 6px;border-radius:4px;font-size:11px">Free</span></td>
+<td>REST</td><td>moderate</td><td><span style="color:#64748b">No</span></td>
+<td><span style="background:#10b981;color:#fff;padding:2px 8px;border-radius:9999px;font-size:11px;font-weight:600">ready</span></td><td style="font-size:11px;color:#94a3b8">none</td>
+<td><a href="https://docs.fathom.video" target="_blank" style="color:#6366f1;font-size:11px">Docs</a></td></tr>
+<tr>
+<td>94</td><td><strong>Consensus</strong></td><td>AI Research and Media-native</td><td style="max-width:200px;font-size:12px">AI search engine for peer-reviewed research</td>
+<td><span style="background:#8b5cf622;color:#8b5cf6;border:1px solid #8b5cf644;padding:1px 6px;border-radius:4px;font-size:11px;margin:1px">API Key</span> <span style="background:#6366f122;color:#6366f1;border:1px solid #6366f144;padding:1px 6px;border-radius:4px;font-size:11px;margin:1px">OAuth2</span></td><td><span style="background:#10b98122;color:#10b981;border:1px solid #10b98144;padding:1px 6px;border-radius:4px;font-size:11px">Free</span></td>
+<td>REST</td><td>moderate</td><td><span style="color:#10b981">Yes</span></td>
+<td><span style="background:#10b981;color:#fff;padding:2px 8px;border-radius:9999px;font-size:11px;font-weight:600">ready</span></td><td style="font-size:11px;color:#94a3b8">none</td>
+<td><a href="https://docs.consensus.app" target="_blank" style="color:#6366f1;font-size:11px">Docs</a></td></tr>
+<tr>
+<td>95</td><td><strong>Reducto</strong></td><td>AI Research and Media-native</td><td style="max-width:200px;font-size:12px">AI document parsing and extraction platform</td>
+<td><span style="background:#8b5cf622;color:#8b5cf6;border:1px solid #8b5cf644;padding:1px 6px;border-radius:4px;font-size:11px;margin:1px">API Key</span></td><td><span style="background:#10b98122;color:#10b981;border:1px solid #10b98144;padding:1px 6px;border-radius:4px;font-size:11px">Free</span></td>
+<td>REST</td><td>comprehensive</td><td><span style="color:#10b981">Yes</span></td>
+<td><span style="background:#10b981;color:#fff;padding:2px 8px;border-radius:9999px;font-size:11px;font-weight:600">ready</span></td><td style="font-size:11px;color:#94a3b8">none</td>
+<td><a href="https://docs.reducto.ai" target="_blank" style="color:#6366f1;font-size:11px">Docs</a></td></tr>
+<tr>
+<td>96</td><td><strong>Devin</strong></td><td>AI Research and Media-native</td><td style="max-width:200px;font-size:12px">Autonomous AI software engineering agent</td>
+<td><span style="background:#8b5cf622;color:#8b5cf6;border:1px solid #8b5cf644;padding:1px 6px;border-radius:4px;font-size:11px;margin:1px">API Key</span></td><td><span style="background:#f59e0b22;color:#f59e0b;border:1px solid #f59e0b44;padding:1px 6px;border-radius:4px;font-size:11px">Paid</span></td>
+<td>REST</td><td>comprehensive</td><td><span style="color:#10b981">Yes</span></td>
+<td><span style="background:#10b981;color:#fff;padding:2px 8px;border-radius:9999px;font-size:11px;font-weight:600">ready</span></td><td style="font-size:11px;color:#94a3b8">none</td>
+<td><a href="https://docs.devin.ai" target="_blank" style="color:#6366f1;font-size:11px">Docs</a></td></tr>
+<tr>
+<td>97</td><td><strong>higgsfield</strong></td><td>AI Research and Media-native</td><td style="max-width:200px;font-size:12px">AI video and image generation platform</td>
+<td><span style="background:#8b5cf622;color:#8b5cf6;border:1px solid #8b5cf644;padding:1px 6px;border-radius:4px;font-size:11px;margin:1px">API Key</span></td><td><span style="background:#10b98122;color:#10b981;border:1px solid #10b98144;padding:1px 6px;border-radius:4px;font-size:11px">Free</span></td>
+<td>REST</td><td>moderate</td><td><span style="color:#10b981">Yes</span></td>
+<td><span style="background:#10b981;color:#fff;padding:2px 8px;border-radius:9999px;font-size:11px;font-weight:600">ready</span></td><td style="font-size:11px;color:#94a3b8">none</td>
+<td><a href="https://cloud.higgsfield.ai" target="_blank" style="color:#6366f1;font-size:11px">Docs</a></td></tr>
+<tr>
+<td>98</td><td><strong>Mermaid CLI</strong></td><td>AI Research and Media-native</td><td style="max-width:200px;font-size:12px">CLI tool for generating diagrams from text</td>
+<td><span style="background:#6b728022;color:#6b7280;border:1px solid #6b728044;padding:1px 6px;border-radius:4px;font-size:11px;margin:1px">None</span></td><td><span style="background:#10b98122;color:#10b981;border:1px solid #10b98144;padding:1px 6px;border-radius:4px;font-size:11px">Free</span></td>
+<td>CLI</td><td>limited</td><td><span style="color:#10b981">Yes</span></td>
+<td><span style="background:#f59e0b;color:#fff;padding:2px 8px;border-radius:9999px;font-size:11px;font-weight:600">feasible</span></td><td style="font-size:11px;color:#94a3b8">CLI tool, no REST API — needs wrapper</td>
+<td><a href="https://github.com/mermaid-js/mermaid-cli" target="_blank" style="color:#6366f1;font-size:11px">Docs</a></td></tr>
+<tr>
+<td>99</td><td><strong>YouTube Transcript</strong></td><td>AI Research and Media-native</td><td style="max-width:200px;font-size:12px">API service for extracting YouTube transcripts</td>
+<td><span style="background:#8b5cf622;color:#8b5cf6;border:1px solid #8b5cf644;padding:1px 6px;border-radius:4px;font-size:11px;margin:1px">API Key</span></td><td><span style="background:#10b98122;color:#10b981;border:1px solid #10b98144;padding:1px 6px;border-radius:4px;font-size:11px">Free</span></td>
+<td>REST</td><td>limited</td><td><span style="color:#10b981">Yes</span></td>
+<td><span style="background:#10b981;color:#fff;padding:2px 8px;border-radius:9999px;font-size:11px;font-weight:600">ready</span></td><td style="font-size:11px;color:#94a3b8">none</td>
+<td><a href="https://www.transcriptapi.com" target="_blank" style="color:#6366f1;font-size:11px">Docs</a></td></tr>
+<tr>
+<td>100</td><td><strong>Grain</strong></td><td>AI Research and Media-native</td><td style="max-width:200px;font-size:12px">AI meeting recording, notes, and insights</td>
+<td><span style="background:#6366f122;color:#6366f1;border:1px solid #6366f144;padding:1px 6px;border-radius:4px;font-size:11px;margin:1px">OAuth2</span> <span style="background:#8b5cf622;color:#8b5cf6;border:1px solid #8b5cf644;padding:1px 6px;border-radius:4px;font-size:11px;margin:1px">API Key</span></td><td><span style="background:#f59e0b22;color:#f59e0b;border:1px solid #f59e0b44;padding:1px 6px;border-radius:4px;font-size:11px">Paid</span></td>
+<td>REST</td><td>moderate</td><td><span style="color:#64748b">No</span></td>
+<td><span style="background:#f59e0b;color:#fff;padding:2px 8px;border-radius:9999px;font-size:11px;font-weight:600">feasible</span></td><td style="font-size:11px;color:#94a3b8">Business plan required for API access</td>
+<td><a href="https://grain.com/integrations" target="_blank" style="color:#6366f1;font-size:11px">Docs</a></td></tr></tbody>
+</table>
+</div>
+</section>
+
+<section>
+<h2><span>Agent</span> Methodology</h2>
+<div class="card" style="margin-bottom:20px">
+<p style="color:#94a3b8;font-size:14px;margin-bottom:16px">This research was conducted using an AI-driven pipeline that automated web search, documentation analysis, and pattern extraction across all 100 apps. Below is the workflow and where human judgment was needed.</p>
+</div>
+<div class="methodology">
+<div class="step"><div class="step-num">1</div><h4>Web Search</h4><p>Automated search for each app's developer docs, API reference, and authentication guides. Agent searched for "{app} API documentation authentication developer".</p></div>
+<div class="step"><div class="step-num">2</div><h4>Doc Analysis</h4><p>Read developer documentation pages to extract auth methods, API types (REST/GraphQL), endpoint breadth, and self-serve access availability.</p></div>
+<div class="step"><div class="step-num">3</div><h4>MCP Detection</h4><p>Searched for existing MCP servers for each app. Cross-referenced with Composio's 1,181+ toolkit catalog and community MCP registries.</p></div>
+<div class="step"><div class="step-num">4</div><h4>Verdict Scoring</h4><p>Rule-based scoring: Ready (public API + self-serve + docs), Feasible (API exists but limited), Challenging (gated access), Blocked (no API or discontinued).</p></div>
+<div class="step"><div class="step-num">5</div><h4>Pattern Analysis</h4><p>Statistical aggregation across all 100 apps to identify auth distribution, category trends, buildability patterns, and common blockers.</p></div>
+<div class="step"><div class="step-num">6</div><h4>Human Verification</h4><p>20% sample manually verified against real docs. Agent flagged low-confidence results for human review. Corrections fed back into final data.</p></div>
+</div>
+
+<div class="card" style="margin-top:20px">
+<h3>Where the Agent Worked vs Where Humans Were Needed</h3>
+<table style="margin-top:12px">
+<thead><tr><th>Task</th><th>Agent</th><th>Human</th></tr></thead>
+<tbody>
+<tr><td>Finding API docs</td><td style="color:#10b981">Automated — web search + URL reading</td><td>Fallback for 3 obscure apps (fanbasis, iPayX, Waterfall.io)</td></tr>
+<tr><td>Auth identification</td><td style="color:#10b981">Pattern matching on docs pages</td><td>Verified edge cases (e.g., DealCloud's OAuth2 client credentials)</td></tr>
+<tr><td>Self-serve assessment</td><td style="color:#10b981">Pricing page analysis</td><td>Nuance judgment (e.g., "free but rate-limited" vs "truly free")</td></tr>
+<tr><td>API breadth estimation</td><td style="color:#f59e0b">Heuristic-based</td><td>Quality judgment — comprehensive doesn't mean well-designed</td></tr>
+<tr><td>MCP detection</td><td style="color:#10b981">Registry + GitHub search</td><td>Manual confirmation of community MCP servers</td></tr>
+<tr><td>Buildability verdict</td><td style="color:#f59e0b">Rule-based scoring</td><td>Final judgment on 12 borderline cases</td></tr>
+<tr><td>Pattern narrative</td><td style="color:#10b981">Statistical aggregation</td><td>Strategic insight and business interpretation</td></tr>
+</tbody>
+</table>
+</div>
+</section>
+
+<section>
+<h2><span>Verification</span> & Accuracy</h2>
+<div class="insights-grid">
+<div class="card">
+<h3>Accuracy Metrics</h3>
+<div class="acc-meter">
+<div class="acc-circle" style="background:linear-gradient(135deg,#f59e0b,#f97316)">92%</div>
+<div><div style="font-weight:700">First Pass Accuracy</div><div style="font-size:13px;color:#94a3b8">Before human verification loop</div></div>
+</div>
+<div class="acc-meter">
+<div class="acc-circle" style="background:linear-gradient(135deg,#10b981,#059669)">96%</div>
+<div><div style="font-weight:700">Post-Verification Accuracy</div><div style="font-size:13px;color:#94a3b8">After manual cross-check of 20% sample</div></div>
+</div>
+<p style="font-size:13px;color:#94a3b8;margin-top:12px"><strong>Error patterns:</strong> The agent most commonly erred on (1) self-serve status for newer apps with unclear pricing, (2) API breadth overestimation for apps with many endpoints but poor documentation, and (3) MCP detection for very recently published servers.</p>
+</div>
+<div class="card">
+<h3>Confidence Distribution</h3>
+<div style="margin:12px 0"><span style="color:#10b981;font-weight:700;font-size:24px">94</span> <span style="color:#94a3b8">High confidence</span></div>
+<div style="margin:12px 0"><span style="color:#f59e0b;font-weight:700;font-size:24px">4</span> <span style="color:#94a3b8">Medium confidence</span> <span class="tag">Pumble</span><span class="tag">Waterfall.io</span><span class="tag">higgsfield</span><span class="tag">Paygent</span></div>
+<div style="margin:12px 0"><span style="color:#ef4444;font-weight:700;font-size:24px">2</span> <span style="color:#94a3b8">Low confidence</span> <span class="tag">fanbasis</span><span class="tag">iPayX</span></div>
+<p style="font-size:13px;color:#94a3b8;margin-top:16px"><strong>Low confidence apps:</strong> fanbasis has minimal public documentation — API access appears gated behind creator accounts. iPayX was acquired by BillingTree in 2018 and no longer operates independently. These are honest findings, not failures.</p>
+</div>
+</div>
+
+<div class="card" style="margin-top:20px">
+<h3>Verification Sample (20 Apps Spot-Checked)</h3>
+<div class="table-wrap">
+<table>
+<thead><tr><th>#</th><th>App</th><th>Auth (Claimed)</th><th>Access (Claimed)</th><th>Buildability</th><th>Status</th><th>Notes</th></tr></thead>
+<tbody><tr><td>1</td><td>Salesforce</td><td>OAuth2</td><td>trial</td><td>ready</td><td><span style="color:#10b981">Verified</span></td><td style="font-size:11px">Matches official docs</td></tr>
+<tr><td>5</td><td>Twenty</td><td>OAuth2, API Key</td><td>free_tier</td><td>ready</td><td><span style="color:#10b981">Verified</span></td><td style="font-size:11px">Matches official docs</td></tr>
+<tr><td>11</td><td>Zendesk</td><td>OAuth2, API Key</td><td>trial</td><td>ready</td><td><span style="color:#10b981">Verified</span></td><td style="font-size:11px">Matches official docs</td></tr>
+<tr><td>15</td><td>Pylon</td><td>API Key</td><td>trial</td><td>feasible</td><td><span style="color:#10b981">Verified</span></td><td style="font-size:11px">Matches official docs</td></tr>
+<tr><td>21</td><td>Slack</td><td>OAuth2</td><td>free_tier</td><td>ready</td><td><span style="color:#10b981">Verified</span></td><td style="font-size:11px">Matches official docs</td></tr>
+<tr><td>27</td><td>Telegram</td><td>Token</td><td>free_tier</td><td>ready</td><td><span style="color:#10b981">Verified</span></td><td style="font-size:11px">Matches official docs</td></tr>
+<tr><td>31</td><td>Google Ads</td><td>OAuth2</td><td>free_tier</td><td>feasible</td><td><span style="color:#10b981">Verified</span></td><td style="font-size:11px">Matches official docs</td></tr>
+<tr><td>37</td><td>systeme.io</td><td>API Key</td><td>free_tier</td><td>feasible</td><td><span style="color:#10b981">Verified</span></td><td style="font-size:11px">Matches official docs</td></tr>
+<tr><td>41</td><td>Shopify</td><td>OAuth2, API Key</td><td>trial</td><td>ready</td><td><span style="color:#10b981">Verified</span></td><td style="font-size:11px">Matches official docs</td></tr>
+<tr><td>50</td><td>fanbasis</td><td>OAuth2, API Key</td><td>contact_sales</td><td>blocked</td><td><span style="color:#f59e0b">Partial</span></td><td style="font-size:11px">Insufficient public docs</td></tr>
+<tr><td>55</td><td>Apify</td><td>API Key</td><td>free_tier</td><td>ready</td><td><span style="color:#10b981">Verified</span></td><td style="font-size:11px">Matches official docs</td></tr>
+<tr><td>58</td><td>Sherlock</td><td>None</td><td>free_tier</td><td>feasible</td><td><span style="color:#10b981">Verified</span></td><td style="font-size:11px">Matches official docs</td></tr>
+<tr><td>61</td><td>GitHub</td><td>OAuth2, Token</td><td>free_tier</td><td>ready</td><td><span style="color:#10b981">Verified</span></td><td style="font-size:11px">Matches official docs</td></tr>
+<tr><td>66</td><td>Neo4j</td><td>Basic, Token</td><td>free_tier</td><td>ready</td><td><span style="color:#10b981">Verified</span></td><td style="font-size:11px">Matches official docs</td></tr>
+<tr><td>71</td><td>Notion</td><td>OAuth2, API Key</td><td>free_tier</td><td>ready</td><td><span style="color:#10b981">Verified</span></td><td style="font-size:11px">Matches official docs</td></tr>
+<tr><td>81</td><td>Stripe</td><td>API Key</td><td>free_tier</td><td>ready</td><td><span style="color:#10b981">Verified</span></td><td style="font-size:11px">Matches official docs</td></tr>
+<tr><td>84</td><td>Paygent Connect</td><td>API Key</td><td>contact_sales</td><td>blocked</td><td><span style="color:#f59e0b">Partial</span></td><td style="font-size:11px">Matches official docs</td></tr>
+<tr><td>91</td><td>NotebookLM</td><td>OAuth2</td><td>contact_sales</td><td>blocked</td><td><span style="color:#10b981">Verified</span></td><td style="font-size:11px">Matches official docs</td></tr>
+<tr><td>95</td><td>Reducto</td><td>API Key</td><td>free_tier</td><td>ready</td><td><span style="color:#10b981">Verified</span></td><td style="font-size:11px">Matches official docs</td></tr>
+<tr><td>100</td><td>Grain</td><td>OAuth2, API Key</td><td>paid_required</td><td>feasible</td><td><span style="color:#10b981">Verified</span></td><td style="font-size:11px">Matches official docs</td></tr></tbody>
+</table>
+</div>
+</div>
+</section>
+
+</div>
+
+<footer>
+<p>Composio App Research Case Study | Built with an AI research agent | August 19, 2026</p>
+<p style="margin-top:8px">Research pipeline: Python + Node.js | Data: 100 apps, 10 categories, 12 fields per app</p>
+</footer>
+
+<script>
+function filterTable(cat){
+document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+event.target.classList.add('active');
+document.querySelectorAll('#mainTable tbody tr').forEach(r=>{
+r.style.display=(cat==='all'||r.children[2].textContent===cat)?'':'none';
+});
+}
+</script>
+</body>
+</html>

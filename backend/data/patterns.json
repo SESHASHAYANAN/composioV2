@@ -1,0 +1,131 @@
+{
+  "total_apps": 100,
+  "timestamp": "2026-08-19T20:48:49.402145",
+  "auth_distribution": {
+    "OAuth2": 63,
+    "API Key": 61,
+    "Basic": 6,
+    "Token": 14,
+    "None": 2
+  },
+  "self_serve_distribution": {
+    "trial": 21,
+    "free_tier": 62,
+    "contact_sales": 10,
+    "paid_required": 7
+  },
+  "api_type_distribution": {
+    "REST": 90,
+    "Both": 5,
+    "GraphQL": 3,
+    "CLI": 2
+  },
+  "api_breadth_distribution": {
+    "comprehensive": 72,
+    "moderate": 17,
+    "limited": 11
+  },
+  "buildability_distribution": {
+    "ready": 71,
+    "feasible": 17,
+    "challenging": 6,
+    "blocked": 6
+  },
+  "mcp_count": 32,
+  "category_breakdown": {
+    "CRM and Sales": {
+      "count": 10,
+      "self_serve_free": 9,
+      "has_oauth": 9,
+      "ready_to_build": 8
+    },
+    "Support and Helpdesk": {
+      "count": 10,
+      "self_serve_free": 9,
+      "has_oauth": 6,
+      "ready_to_build": 8
+    },
+    "Communications and Messaging": {
+      "count": 10,
+      "self_serve_free": 10,
+      "has_oauth": 6,
+      "ready_to_build": 7
+    },
+    "Marketing Ads Email and Social": {
+      "count": 10,
+      "self_serve_free": 10,
+      "has_oauth": 8,
+      "ready_to_build": 4
+    },
+    "Ecommerce": {
+      "count": 10,
+      "self_serve_free": 7,
+      "has_oauth": 10,
+      "ready_to_build": 4
+    },
+    "Data SEO and Scraping": {
+      "count": 10,
+      "self_serve_free": 5,
+      "has_oauth": 0,
+      "ready_to_build": 7
+    },
+    "Developer Infra and Data Platforms": {
+      "count": 10,
+      "self_serve_free": 10,
+      "has_oauth": 6,
+      "ready_to_build": 10
+    },
+    "Productivity and Project Management": {
+      "count": 10,
+      "self_serve_free": 10,
+      "has_oauth": 9,
+      "ready_to_build": 10
+    },
+    "Finance and Fintech": {
+      "count": 10,
+      "self_serve_free": 7,
+      "has_oauth": 4,
+      "ready_to_build": 7
+    },
+    "AI Research and Media-native": {
+      "count": 10,
+      "self_serve_free": 6,
+      "has_oauth": 5,
+      "ready_to_build": 6
+    }
+  },
+  "common_blockers": {
+    "Enterprise-only, admin approval required": 1,
+    "Smaller API surface": 1,
+    "Enterprise-only, contact sales required": 1,
+    "Smaller user base": 1,
+    "Very limited API surface": 1,
+    "Meta app review required for production": 1,
+    "Developer token approval process": 1,
+    "App review required": 1,
+    "Marketing developer platform access": 1,
+    "Limited API endpoints": 1,
+    "App review for production access": 1,
+    "Limited to own-account actions, app review needed": 1,
+    "Enterprise license required": 1,
+    "API still evolving, limited scope": 1,
+    "Paid plan required for API access": 1,
+    "Limited API surface": 1,
+    "Complex registration and role-based access": 1,
+    "Gated API access, minimal public docs": 1,
+    "CLI tool, no REST API \u2014 needs wrapper": 2,
+    "Contact sales for API access": 1,
+    "No public API to control Clay \u2014 it consumes APIs, not exposes one": 1,
+    "Japan-only, requires merchant contract": 1,
+    "Product discontinued / acquired": 1,
+    "Enterprise contract + credit purchase required": 1,
+    "Enterprise-only API, no public access": 1,
+    "Enterprise-only REST API; MCP available more broadly": 1,
+    "Business plan required for API access": 1
+  },
+  "confidence_distribution": {
+    "high": 94,
+    "medium": 4,
+    "low": 2
+  }
+}
