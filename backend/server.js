@@ -382,15 +382,18 @@ app.get('/', (req, res) => {
 
 // Start server if run directly, or export app for serverless Vercel deployment
 if (require.main === module) {
-  (async () => {
-    await discoverModel();
-    app.listen(PORT, () => {
-      console.log(`\n[SERVER] Composio Research Agent running at http://localhost:${PORT}`);
+  app.listen(PORT, () => {
+    console.log(`\n[SERVER] Composio Research Agent running at http://localhost:${PORT}`);
+    console.log(`[SERVER] Apps loaded: ${researchData.length}`);
+    
+    // Discover model in the background so it doesn't block server startup (fixes Render 502)
+    discoverModel().then(() => {
       console.log(`[SERVER] Groq API: Connected`);
       console.log(`[SERVER] Active Model: ${activeModel}`);
-      console.log(`[SERVER] Apps loaded: ${researchData.length}`);
+    }).catch(err => {
+      console.error('[MODEL] Discovery error:', err);
     });
-  })();
+  });
 } else {
   discoverModel().catch(err => console.error('[MODEL] Discovery error in serverless mode:', err));
 }
